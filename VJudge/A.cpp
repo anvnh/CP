@@ -14,18 +14,10 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    int n, x; cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].fi;
-        a[i].se = i + 1;
-    }
-    sort(all(a));
-    for(int i = 0; i < n; i++)
-    {
-        ll target1 = x - a[i].fi;
-    }
-    cout << "IMPOSSIBLE";
+    string s; cin >> s;
+    s[sz(s) - 1] = '4';
+    cout << s << endl;
+    
 }
 
 signed main()

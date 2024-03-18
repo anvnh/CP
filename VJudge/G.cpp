@@ -11,21 +11,52 @@ using namespace std;
 #define rall(x) rbegin(x), rend(x)
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
+int maxn = 1000005;
+
+vector<vector<int>> graph(maxn);
+vector<bool> visited(maxn, false);
+vector<int> deg(maxn, 0);
+int cnt;
+
+void dfs(int u)
+{
+    cnt++;
+    visited[u] = true;
+    for(int v : graph[u])
+    {
+        if(visited[v]) continue;
+        else dfs(v);
+    }
+}
 
 void solve()
 {
-    int n, x; cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].fi;
-        a[i].se = i + 1;
-    }
-    sort(all(a));
+    int n; cin >> n;
+    int ans = INT_MIN;
     for(int i = 0; i < n; i++)
     {
-        ll target1 = x - a[i].fi;
+        int u, v; cin >> u >> v;
+        // u--; v--;
+        graph[u].pb(v);
+        graph[v].pb(u);
+        deg[u]++;
+        deg[v]++;
     }
-    cout << "IMPOSSIBLE";
+    if(deg[1] == 1) {
+        cout << 1;
+        return;
+    }
+    else {
+        for(int node : graph[1])
+        {
+            visited[1] = true;
+            cnt = 0;
+            dfs(node);
+            // cout << cnt << endl;
+            ans = max(ans, cnt);
+        }
+    }
+    cout << n - ans << endl;
 }
 
 signed main()

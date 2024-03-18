@@ -12,28 +12,34 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
+int n; 
+vector<int> a, b;
+
 void solve()
 {
-    int n, x; cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].fi;
-        a[i].se = i + 1;
-    }
+    cin >> n;
+    a.resize(n);
+    b.resize(n);
+    for(int&v : a) cin >> v;
+    b = a;
     sort(all(a));
+    int cnt = 0;
     for(int i = 0; i < n; i++)
     {
-        ll target1 = x - a[i].fi;
+        if(a[i] != b[i])
+            cnt++;
     }
-    cout << "IMPOSSIBLE";
+    cout << cnt - 1 << endl;
 }
 
 signed main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+// #endif
+    freopen("outofplace.in", "r", stdin);
+    freopen("outofplace.out", "w", stdout);
     fastio
     int ntest;
     ntest = 1;

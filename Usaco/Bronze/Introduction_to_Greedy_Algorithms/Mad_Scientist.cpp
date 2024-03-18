@@ -14,26 +14,38 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    int n, x; cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].fi;
-        a[i].se = i + 1;
-    }
-    sort(all(a));
+    int n; cin >> n;
+    bool mark = false;
+    int res = 0;
+    string a, b; cin >> a >> b;
     for(int i = 0; i < n; i++)
     {
-        ll target1 = x - a[i].fi;
+        if(a[i] != b[i])
+        {
+            if(mark == true)
+            {
+                res++;
+            }
+        }
+        if(a[i] == b[i])
+        {
+            mark = true;
+        }
     }
-    cout << "IMPOSSIBLE";
+    
+    cout << res << endl;
+    
 }
 
 signed main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+// #endif
+    freopen("breedflip.in", "r", stdin);
+    freopen("breadflip.out", "w", stdout);
+	freopen("breedflip.out", "w", stdout);
     fastio
     int ntest;
     ntest = 1;

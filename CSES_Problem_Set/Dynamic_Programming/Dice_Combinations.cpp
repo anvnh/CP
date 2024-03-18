@@ -12,20 +12,21 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
+int n;
+vector<int> dp(1e6 + 1, 0);
+
 void solve()
 {
-    int n, x; cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].fi;
-        a[i].se = i + 1;
-    }
-    sort(all(a));
-    for(int i = 0; i < n; i++)
+    cin >> n;
+    dp[0] = 1;
+    for(int i = 1; i <= n; i++)
     {
-        ll target1 = x - a[i].fi;
+        for(int j = 1; j <= 6 && i - j >= 0; j++)
+        {
+            (dp[i] += dp[i - j]) %= MOD;
+        }
     }
-    cout << "IMPOSSIBLE";
+    cout << dp[n] << endl;
 }
 
 signed main()

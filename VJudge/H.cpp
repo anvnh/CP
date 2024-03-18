@@ -12,20 +12,47 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
+int maxn = 1000005;
+
 void solve()
 {
-    int n, x; cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].fi;
-        a[i].se = i + 1;
-    }
-    sort(all(a));
+    int n; cin >> n;
+    vector<pair<int, int>> data(n);
+    map<int, int> mp;
     for(int i = 0; i < n; i++)
+        cin >> data[i].fi >> data[i].se;
+    vector<int> res;
+    int cnt = 0;
+    int min_k = 0;
+    for(int i = n - 1; i >= 0; i--)
     {
-        ll target1 = x - a[i].fi;
+        if(data[i].fi == 1)
+        {
+            if(mp[data[i].se] == 0) 
+            {
+                res.pb(0);
+            }
+            else {
+                res.pb(1);
+                cnt--;
+                mp[data[i].se]--;
+            }
+        }
+        if(data[i].fi == 2)
+        {
+            cnt++;
+            min_k = max(min_k, cnt);
+            mp[data[i].se]++;
+        }
     }
-    cout << "IMPOSSIBLE";
+    if(cnt == 0)
+    {
+        cout << min_k << endl;
+        for(int i = sz(res) - 1; i >= 0; i--) cout << res[i] << " ";
+    }
+    else {
+        cout << -1 << endl;
+    }
 }
 
 signed main()

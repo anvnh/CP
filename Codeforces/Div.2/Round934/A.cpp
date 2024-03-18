@@ -14,18 +14,13 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    int n, x; cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].fi;
-        a[i].se = i + 1;
-    }
-    sort(all(a));
-    for(int i = 0; i < n; i++)
+    int n, k; cin >> n >> k;
+    if(k >= n - 1)
     {
-        ll target1 = x - a[i].fi;
+        cout << 1;
     }
-    cout << "IMPOSSIBLE";
+    else cout << n;
+    cout << endl;
 }
 
 signed main()
@@ -37,7 +32,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

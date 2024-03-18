@@ -12,20 +12,17 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
+int n, x; 
+vector<int> h, s;
+
 void solve()
 {
-    int n, x; cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].fi;
-        a[i].se = i + 1;
-    }
-    sort(all(a));
-    for(int i = 0; i < n; i++)
-    {
-        ll target1 = x - a[i].fi;
-    }
-    cout << "IMPOSSIBLE";
+    cin >> n >> x;
+    h.resize(n);
+    s.resize(n);
+    for(int&v : h) cin >> v;
+    for(int&v : s) cin >> v;
+    
 }
 
 signed main()
@@ -37,7 +34,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();
