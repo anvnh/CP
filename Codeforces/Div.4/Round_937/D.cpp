@@ -12,11 +12,39 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
+int cal(int x, vector<int>&a)
+{
+    for(int i = 0; i < sz(a); i++)
+    {
+        while(x % a[i] == 0) x /= a[i];
+    }
+    return (x == 1) ? 1 : 0;
+}
+
 void solve()
 {
-    string s; cin >> s;
-    s[sz(s) - 1] = '4';
-    cout << s << endl;
+    int n; cin >> n;
+    vector<int> preset = {11, 10, 111, 110, 101, 100, 1111, 1110, 1101, 1100, 1011, 1010, 1001, 1000};
+    string s = to_string(n);
+    bool isFullBinary = true;
+    for(auto x : s)
+    {
+        if(x > '1')
+        {
+            isFullBinary = false;
+            break;
+        }
+    }
+    if(isFullBinary)
+    {
+        cout << "YES" << endl;
+        return;
+    }
+    else
+    {
+        cal(n, preset) ? cout << "YES" << endl : cout << "NO" << endl;
+        return;
+    }
 }
 
 signed main()
@@ -28,7 +56,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

@@ -68,6 +68,7 @@ void solve()
         if(type == 1) update(1, 1, n, x, y);
         else cout << get(1, 1, n, x, y) << endl;
     }
+    
 }
 
 signed main()

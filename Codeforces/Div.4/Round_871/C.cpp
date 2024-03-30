@@ -14,41 +14,44 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    string a, b; cin >> a >> b;
-    map<char, int> cnt_odd, cnt_even;
-    for(int i = 1; i <= sz(a); i++)
+    int n; cin >> n;
+    vector<pair<int, string>> vp10;
+    vector<pair<int, string>> vp01;
+    vector<pair<int, string>> vp11;
+    for(int i = 0; i < n; i++) 
     {
-        if(i&1)
-        {
-            cnt_odd[a[i - 1]]++;
-        }
-        else cnt_even[a[i - 1]]++;
+        int x; string y;
+        cin >> x >> y;
+        if(y[0] == '1' && y[1] == '0')
+            vp10.pb({x, y});
+        if(y[0] == '0' && y[1] == '1')
+            vp01.pb({x, y});
+        if(y[0] == '1' && y[1] == '1')
+            vp11.pb({x, y});
     }
-    for(int i = 1; i <= sz(b); i++)
+    sort(all(vp01));
+    sort(all(vp10));
+    sort(all(vp11));
+    if(sz(vp11) == 0)
     {
-        if(i&1)
+        if(sz(vp01) != 0 && sz(vp10) != 0)
         {
-            cnt_odd[b[i - 1]]--;
-        }
-        else cnt_even[b[i - 1]]--;
-    }
-    for(auto x: cnt_odd)
-    {
-        if(x.se != 0)
-        {
-            cout << "NO" << endl;
+            cout << vp01[0].fi + vp10[0].fi <<  endl;
             return;
         }
+        cout << -1 << endl;
+        return;
     }
-    for(auto x : cnt_even)
+    else 
     {
-        if(x.se != 0)
+        if(sz(vp01) != 0 && sz(vp10) != 0)
         {
-            cout << "NO" << endl;
+            cout << min(vp01[0].fi + vp10[0].fi, vp11[0].fi) << endl;
             return;
         }
+        cout << vp11[0].fi << endl;
+        return;
     }
-    cout << "YES" << endl;
 }
 
 signed main()
@@ -59,6 +62,7 @@ signed main()
 #endif
     fastio
     int ntest;
+    ntest = 1;
     cin >> ntest;
     while (ntest--)
     {

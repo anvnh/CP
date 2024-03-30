@@ -14,9 +14,18 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    string s; cin >> s;
-    s[sz(s) - 1] = '4';
-    cout << s << endl;
+    int a, b, c; cin >> a >> b >> c;
+    if(a < b && b < c) 
+    {
+        cout << "STAIR" << endl;
+        return;
+    }
+    if(a < b && b > c) 
+    {
+        cout << "PEAK" << endl;
+        return;
+    }
+    cout << "NONE" << endl;
 }
 
 signed main()
@@ -28,7 +37,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

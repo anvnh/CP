@@ -12,11 +12,28 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
+vector<int> factor;
+
+void getFactor(int n)
+{
+    factor.clear();
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            factor.pb(i);
+            if(i != n / i) factor.pb(n / i);
+        }
+    }
+    if (n > 1)
+        factor.pb(n);
+}
+
 void solve()
 {
+    int n; cin >> n;
     string s; cin >> s;
-    s[sz(s) - 1] = '4';
-    cout << s << endl;
+    getFactor(n);
 }
 
 signed main()
@@ -28,7 +45,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

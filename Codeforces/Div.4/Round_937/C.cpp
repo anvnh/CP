@@ -15,8 +15,31 @@ const ll MOD = 1e9 + 7;
 void solve()
 {
     string s; cin >> s;
-    s[sz(s) - 1] = '4';
-    cout << s << endl;
+    string k = s.substr(0, 2);
+    int hour = stoi(k);
+    string ans;
+    if(hour == 12)
+    {
+        ans = k + s.substr(2, 3) + " PM";
+    }
+    else if(hour == 0)
+    {
+        ans = "12" + s.substr(2, 3) + " AM";
+    }
+    else if(hour < 12)
+    {
+        ans = k + s.substr(2, 3) + " AM";
+    }
+    else
+    {
+        ans = to_string(hour - 12) + s.substr(2, 3) + " PM";
+    }
+    if(sz(ans) == 7)
+    {
+        ans = "0" + ans;
+    }
+    cout << ans << endl;
+
 }
 
 signed main()
@@ -28,7 +51,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

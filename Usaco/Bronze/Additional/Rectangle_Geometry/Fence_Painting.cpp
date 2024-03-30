@@ -14,17 +14,19 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    string s; cin >> s;
-    s[sz(s) - 1] = '4';
-    cout << s << endl;
+    int a, b; cin >> a >> b;
+    int c, d; cin >> c >> d;
+    cout << (b - a) + (d - c) - (max(min(b, d) - max(a, c), 0));
 }
 
 signed main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+// #endif
+    freopen("paint.in", "r", stdin);
+    freopen("paint.out", "w", stdout);
     fastio
     int ntest;
     ntest = 1;

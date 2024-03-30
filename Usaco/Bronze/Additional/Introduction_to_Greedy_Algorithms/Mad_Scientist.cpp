@@ -45,7 +45,6 @@ signed main()
 // #endif
     freopen("breedflip.in", "r", stdin);
     freopen("breadflip.out", "w", stdout);
-	freopen("breedflip.out", "w", stdout);
     fastio
     int ntest;
     ntest = 1;

@@ -14,9 +14,8 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    string s; cin >> s;
-    s[sz(s) - 1] = '4';
-    cout << s << endl;
+    int n; cin >> n;
+
 }
 
 signed main()
@@ -28,7 +27,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

@@ -11,12 +11,23 @@ using namespace std;
 #define rall(x) rbegin(x), rend(x)
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
+const int maxn = 1e7 + 10;
+
+
+bool try1(int n, int m)
+{
+    if(n == m)
+        return true;
+    if(n % 3 != 0)
+        return false;
+    return (try1(n * 2 / 3, m) || try1(n / 3, m));
+}
 
 void solve()
 {
-    string s; cin >> s;
-    s[sz(s) - 1] = '4';
-    cout << s << endl;
+    int n, m;
+    cin >> n >> m;
+    cout << (try1(n, m) ? "YES" : "NO") << endl;
 }
 
 signed main()
@@ -28,7 +39,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

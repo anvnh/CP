@@ -14,41 +14,48 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    string a, b; cin >> a >> b;
-    map<char, int> cnt_odd, cnt_even;
-    for(int i = 1; i <= sz(a); i++)
+    int n; cin >> n;
+    vector<vector<char>> a(2 * n, vector<char>(2 * n, '.'));
+    for(int i = 0; i < 2 * n; i+=4)
     {
-        if(i&1)
+        for(int j = 0; j < 2 * n; j += 4)
         {
-            cnt_odd[a[i - 1]]++;
-        }
-        else cnt_even[a[i - 1]]++;
-    }
-    for(int i = 1; i <= sz(b); i++)
-    {
-        if(i&1)
-        {
-            cnt_odd[b[i - 1]]--;
-        }
-        else cnt_even[b[i - 1]]--;
-    }
-    for(auto x: cnt_odd)
-    {
-        if(x.se != 0)
-        {
-            cout << "NO" << endl;
-            return;
+            a[i][j] = '#';
+            a[i][j + 1] = '#';
         }
     }
-    for(auto x : cnt_even)
+    for(int i = 1; i < 2 * n; i+=4)
     {
-        if(x.se != 0)
+        for(int j = 0; j < 2 * n; j += 4)
         {
-            cout << "NO" << endl;
-            return;
+            a[i][j] = '#';
+            a[i][j + 1] = '#';
         }
     }
-    cout << "YES" << endl;
+    for(int i = 2; i < 2 * n; i+=4)
+    {
+        for(int j = 2; j < 2 * n; j += 4)
+        {
+            a[i][j] = '#';
+            a[i][j + 1] = '#';
+        }
+    }
+    for(int i = 3; i < 2 * n; i+=4)
+    {
+        for(int j = 2; j < 2 * n; j += 4)
+        {
+            a[i][j] = '#';
+            a[i][j + 1] = '#';
+        }
+    }
+    for(int i = 0; i < 2 * n; i++)
+    {
+        for(int j = 0; j < 2 * n; j ++)
+        {
+            cout << a[i][j];
+        }
+        cout << endl;
+    }
 }
 
 signed main()
@@ -59,6 +66,7 @@ signed main()
 #endif
     fastio
     int ntest;
+    ntest = 1;
     cin >> ntest;
     while (ntest--)
     {
