@@ -14,7 +14,25 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n; cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    vector<int> res;
+    int curr = n - 1;
+    for(int i = n - 1; i >= 0; i--)
+    {
+        int cnt = 0;
+        if(a[i] == 1)
+        {
+            res.pb(curr - i + 1);
+            curr = i - 1;
+        }
+    }
+    cout << sz(res) << endl;
+    for(int i = sz(res) - 1; i >= 0; i--)
+    {
+        cout << res[i] << " ";
+    }
 }
 
 signed main()
@@ -26,7 +44,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

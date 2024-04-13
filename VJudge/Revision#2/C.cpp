@@ -14,7 +14,16 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int x, y; cin >> x >> y;
+    string s; cin >> s;
+    for(char c : s)
+    {
+        if(c == 'U') y++;
+        if(c == 'D') y--;
+        if(c == 'L') x--;
+        if(c == 'R') x++;
+    }
+    cout << x << " " << y << endl;
 }
 
 signed main()
@@ -26,7 +35,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

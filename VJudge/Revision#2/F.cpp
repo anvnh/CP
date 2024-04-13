@@ -14,7 +14,19 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n; cin >> n;
+    string s; cin >> s;
+	ll a = 0, b = 0, c = 0, d = 0, e = 0;
+    for(int i = 0; i < sz(s); i++)
+    {
+        if(s[i] == 'a') a++;
+        else if(s[i] == 'b') b++;
+        else if(s[i] == 'c') c++;
+        else if(s[i] == 'd') d++;
+        else e++;
+    }
+    // cout << a << " " << b << " " << c << " " << d << " " << e << endl;
+	cout << min(a, min(b, min(c, min(d, e)))) << " " << max(a, max(b, max(c, max(d, e)))) << endl;
 }
 
 signed main()
@@ -26,7 +38,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

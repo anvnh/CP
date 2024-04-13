@@ -14,7 +14,28 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n; cin >> n;
+    map<int, int> mp;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++)
+    {
+        int x; cin >> x;
+        a[i] = x;
+        mp[x]++;
+    }
+    int ans = 0;
+    for(int i = 0; i < n; i++)
+    {
+        if(mp[a[i]] == 1)
+        {
+            ans = i + 1;
+            break;
+        }
+        else {
+            mp[a[i]]--;
+        }
+    }
+    cout << ans << endl;
 }
 
 signed main()
@@ -26,7 +47,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

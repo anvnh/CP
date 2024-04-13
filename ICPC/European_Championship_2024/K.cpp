@@ -14,7 +14,13 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n, nA, nB, nC;
+    cin >> n >> nA >> nB >> nC;
+    vector<int> a(n);
+    vector<int> gA, gB, gC;
+    for(int&v : a) cin >> v;
+    sort(all(a));
+    
 }
 
 signed main()

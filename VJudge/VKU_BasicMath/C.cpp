@@ -14,7 +14,24 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int a, b, c, d;   
+    cin >> a >> b >> c >> d;
+    if(b >= a)
+    {
+        cout << b << endl;
+        return;
+    }
+    if(c <= d)
+    {
+        cout << -1 << endl;
+        return;
+    }
+    ll ans = b;
+    ll x = a - b;
+    ll y = c - d;
+    ll z = (x + y - 1) / y;
+    ans += z * c;
+    cout << ans << endl;
 }
 
 signed main()

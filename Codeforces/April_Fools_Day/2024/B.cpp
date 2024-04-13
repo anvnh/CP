@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <cstdlib>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define ll long long
@@ -14,7 +15,9 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    string s; cin >> s;
+    bool ans = s.find("it") != string::npos;
+    cout << (ans ? "YES" : "NO") << endl;
 }
 
 signed main()

@@ -14,8 +14,29 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
-}
+    int n, k; 
+    cin >> n >> k;
+    if(k == 1)
+    {
+        for(int i = 1; i <= n; i++)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
+        return;
+    }
+    if(k == n)
+    {
+        for(int i = 0; i < n; i++)
+        {
+            cout << 1 << " ";
+        }
+        cout << endl;
+        return;
+    }
+    cout << -1 << endl;
+    return;
+}   
 
 signed main()
 {
@@ -25,7 +46,7 @@ signed main()
 #endif
     fastio
     int ntest;
-    ntest = 1;
+    // ntest = 1;
     cin >> ntest;
     while (ntest--)
     {

@@ -14,7 +14,9 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    ll a, b, k; cin >> a >> b >> k;
+    int res = 0;
+    cout << (k - k / 2) * a - (k / 2) * b << endl;
 }
 
 signed main()

@@ -14,7 +14,31 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n;
+	ll t;
+	cin >> n >> t;
+	vector<ll> a(n);
+    for(auto&v : a) cin >> v;
+	ll l = 0;
+	ll r = 1e18;
+	ll ans = 0;
+	while (l <= r) {
+		ll mid = (l + r) / 2;
+		ll sum = 0;
+		for (int i = 0; i < n; i++) {
+			sum += (mid / a[i]);
+			if (sum >= t) {  
+				break;
+			}
+		}
+		if (sum >= t) {
+			ans = mid;
+			r = mid - 1;
+		} else {
+			l = mid + 1;
+		}
+	}
+	cout << ans << "\n";
 }
 
 signed main()
@@ -26,7 +50,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

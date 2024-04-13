@@ -14,19 +14,22 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    ll n; cin >> n;
+    cout << ((n * (n + 1)) >> 1) - n << endl;
 }
 
 signed main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+// #endif
+    freopen("TONG.INP", "r", stdin);
+    freopen("TONG.OUT", "w", stdout);
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

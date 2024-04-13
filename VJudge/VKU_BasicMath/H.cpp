@@ -14,7 +14,32 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int x, y, z; cin >> x >> y >> z;
+    if(x == y && y == z)
+    {
+        cout << "YES" << endl;
+        cout << x << " " << x << " " << x << endl;
+        return;
+    }
+    if(x == y && x > z)
+    {
+        cout << "YES" << endl;
+        cout << x << " " << z << " " << z << endl;
+        return;
+    }
+    if(x == z && x > y)
+    {
+        cout << "YES" << endl;
+        cout << x << " " << y << " " << y << endl;
+        return;
+    }
+    if(y == z && y > x)
+    {
+        cout << "YES" << endl;
+        cout << y << " " << x << " " << x << endl;
+        return;
+    }
+    cout << "NO" << endl;
 }
 
 signed main()

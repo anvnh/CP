@@ -14,7 +14,14 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n; cin >> n;
+    int a, b; cin >> a >> b;
+    if(a * 2 < b) return cout << n * a << endl, void();
+    if(a * 2 >= b)
+    {
+        int rem = n % 2;
+        return cout << rem * a + (n - rem) / 2 * b << endl, void();
+    }
 }
 
 signed main()

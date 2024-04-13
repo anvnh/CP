@@ -14,7 +14,8 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    ll x; cin >> x;
+    cout << x * 2 << endl;
 }
 
 signed main()
@@ -26,7 +27,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

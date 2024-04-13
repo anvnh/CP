@@ -12,11 +12,6 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
-void solve()
-{
-      
-}
-
 signed main()
 {
 #ifndef ONLINE_JUDGE
@@ -25,13 +20,16 @@ signed main()
 #endif
     fastio
     int ntest;
-    ntest = 1;
-    cin >> ntest;
-    while (ntest--)
+    ntest = 21;
+    int cnt = 0;
+    while(ntest--)
     {
-        clock_t z = clock();
-        solve();
-        debug("Total Time: %.7f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
+        string s; cin >> s;
+        if(s[0] == '1' && s[sz(s) - 1] == '1')
+        {
+            cnt++;
+        }
     }
+    cout << cnt << endl;
     return 0;
 }

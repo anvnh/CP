@@ -14,7 +14,23 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n, m; cin >> n >> m;
+    vector<int> cnt(n, 0);
+    for(int i = 0; i < n; i++)
+    {
+        int x; cin >> x;
+        cnt[x]++;
+    }
+    sort(all(cnt));
+    // for(auto x : cnt) cout << x << " " << endl;
+    for(int i = n - 1; i >= 0; i--)
+    {
+        if(cnt[i] <= m)
+        {
+            cout << cnt[i] << endl;
+            return;
+        }
+    }
 }
 
 signed main()
@@ -23,10 +39,12 @@ signed main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    freopen("SHIPPER.INP", "r", stdin);
+    freopen("SHIPPER.OUT", "w", stdout);
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

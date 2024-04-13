@@ -14,7 +14,18 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n; cin >> n;
+    set<int> st;
+    for(int i = 1; i * i <= n; i++)
+    {
+        st.insert(i * i);
+    }
+    for(int i = 1; i * i * i <= n; i++)
+    {
+        st.insert(i * i * i);
+    }
+    cout << st.size() << endl;
+
 }
 
 signed main()

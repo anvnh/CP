@@ -12,9 +12,32 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
+ll count(int a, int b)
+{
+    int cnt = 0;
+    while(a != 0)
+    {
+        if(a < b) swap(a, b);
+        a -= b;
+        cnt++;
+    }
+    return cnt;
+}
+ll count1(ll a, ll b)
+{
+    if(a % b == 0) return a / b;
+    return a / b + count1(b, a % b);
+}
+
 void solve()
 {
-      
+    ll a, b; cin >> a >> b;
+    // int ans = 0;
+    // int first_cnt = a / b;
+    // ans += first_cnt;
+    // a -= first_cnt * b;
+    // cout << a << " " << b << endl;
+    cout << count1(a, b) << endl;
 }
 
 signed main()

@@ -14,7 +14,35 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-      
+    int n, c, d; cin >> n >> c >> d;
+    vector<int> a(n * n);
+    for(int i = 0; i < n * n; i++)
+    {
+        cin >> a[i];
+    }
+    sort(all(a));
+    // for(auto x : a) cout << x << " ";
+    // cout << endl;
+    vector<int> b(n * n);
+    b[0] = a[0];
+    for(int i = 1; i < n; i++)
+    {
+        b[i] = b[i - 1] + d;
+    }
+    for(int i = 1; i < n; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            b[i * n + j] = b[i * n + j - n] + c;
+        }
+    }
+    sort(all(b));
+    for(int i = 0; i < n * n; i++)
+    {
+        if(a[i] != b[i])
+            return cout << "NO" << endl, void();
+    }
+    cout << "YES" << endl;
 }
 
 signed main()
