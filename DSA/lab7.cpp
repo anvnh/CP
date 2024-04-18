@@ -47,21 +47,28 @@ void traversal()
     cout << endl;
 }
 
-void addAfter(int id, string name, int len, int needID)
+Node* findNode(int id)
 {
     Node* temp = head;
-    while(temp -> songID != needID)
-    {
+    while(temp -> songID != id) {
         temp = temp -> next;
     }
+    return temp;
+}
+
+void addAfter(int id, string name, int len, Node* Q)
+{
     Node* add = new Node();
     add -> songID = id;
     add -> name = name;
     add -> length = len;
-    add -> next = temp -> next; 
-    temp -> next = add;
+    add -> next = Q -> next; 
+    Q -> next = add;
 }
 
+void DeleteN(){
+
+}
 
 signed main()
 {
@@ -77,7 +84,8 @@ signed main()
     addFirst(5, "OAIWJD", 3);
     addFirst(6, "LAWID", 3);
     traversal();
-    addAfter(100, "AHHAHA", 999, 4);
+    addAfter(100, "AHHAHA", 999, findNode(4));
+    addAfter(999, "NAIXI", 1231, findNode(2));
     traversal();
     return 0;
 }
