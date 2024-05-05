@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <numeric>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define ll long long
@@ -12,9 +13,17 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
-
 void solve()
 {
+    ll n,m,x,k;
+	cin >> n >> m >> k;
+    ll l = 0, r = 2e18;
+	while((l+1)<r){
+		ll mid = (l + r) >> 1;
+        if((mid / n) + (mid / m) - 2 * (mid / (n * m / __gcd(n, m))) >= k) r = mid;
+        else l = mid;
+	}
+    cout << r << endl;
 }
 
 signed main()
@@ -26,7 +35,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

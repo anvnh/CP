@@ -12,9 +12,24 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
-
 void solve()
 {
+    ll n, k; cin >> n >> k;
+    ll sum = k * (k + 1) / 2;
+    set<int> s;
+    for(int i = 0; i < n; i++)
+    {
+        int x; cin >> x;
+        s.insert(x);
+    }
+    for(auto x : s)
+    {
+        if(x <= k)
+        {
+            sum -= x;
+        }
+    }
+    cout << sum << endl;
 }
 
 signed main()
@@ -26,7 +41,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

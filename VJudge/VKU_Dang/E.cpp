@@ -12,9 +12,9 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
-
 void solve()
 {
+    int  n, k, Pb, Ps; cin >> n >> k >> Ps >> Pb;
 }
 
 signed main()

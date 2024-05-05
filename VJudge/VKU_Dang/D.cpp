@@ -12,9 +12,34 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
-
 void solve()
 {
+    int n; cin >> n;
+    deque<int> a(n);
+    vector<int> l(n + 2, 0);
+    vector<int> r(n + 2, 0);
+    for(int i = 0; i < n; i++) 
+        cin >> a[i];
+    a.push_front(0);
+    a.push_back(0);
+    // for(auto x : a) cout << x << " ";
+    for(int i = 1; i <= n; i++)
+    {
+        l[i] = min(a[i], l[i - 1] + 1);
+    }
+    for(int i = n; i >= 1; i--)
+    {
+        r[i] = min(a[i], r[i + 1] + 1);
+    }
+    // for(auto x : l) cout << x << " ";
+    // cout << endl;
+    // for(auto x : r) cout << x << " ";
+    int ans = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        ans = max(min(l[i], r[i]), ans);
+    }
+    cout << ans << endl;
 }
 
 signed main()
@@ -26,7 +51,7 @@ signed main()
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();
