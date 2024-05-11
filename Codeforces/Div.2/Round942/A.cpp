@@ -15,12 +15,28 @@ const ll MOD = 1e9 + 7;
 void solve()
 {
     int n; cin >> n;
-    ll sum = 0;
-    for(int i = 0; i < n; i++)
+    deque<int> a(n), b(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    for(int i = 0; i < n; i++) cin >> b[i];
+    bool ok = true;
+    int cnt = 0;
+    while(ok)
     {
-        sum += i;
+        bool check = true;
+        for(int i = 0; i < n; i++)
+        {
+            if(a[i] > b[i]) check = false;
+        }
+        if(check) ok = false;
+        else {
+            cnt++;
+            int k = b.front();
+            a.pop_back();
+            a.push_front(k);
+            sort(all(a));
+        }
     }
-    cout << sum << endl;
+    cout << cnt << endl;
 }
 
 signed main()

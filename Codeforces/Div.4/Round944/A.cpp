@@ -14,13 +14,9 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    int n; cin >> n;
-    ll sum = 0;
-    for(int i = 0; i < n; i++)
-    {
-        sum += i;
-    }
-    cout << sum << endl;
+    int x; cin >> x;
+    int y; cin >> y;
+    cout << min(x, y) << " " << max(x, y) << endl;
 }
 
 signed main()

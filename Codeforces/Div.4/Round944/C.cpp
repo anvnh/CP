@@ -14,13 +14,32 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    int n; cin >> n;
-    ll sum = 0;
-    for(int i = 0; i < n; i++)
+    int a, b, c, d; cin >> a >> b >> c >> d;
+    vector<int> res;
+    int gap = max(a, b) - min(a, b);
+    if(max(a, b) - min(a, b) > 6)
     {
-        sum += i;
+        for(int i = max(a, b); i <= max(a, b) + (12 - gap); i++)
+        {
+            if(i > 12) res.pb(i - 12);
+            else res.pb(i);
+        }
     }
-    cout << sum << endl;
+    else {
+        for(int i = min(a, b); i <= max(a, b); i++) res.pb(i);
+    }
+    // for(auto x : res) cout << x << " ";
+    bool ok1 = false, ok2 = false;
+    for(auto x : res) {
+        if(x == c) {
+            ok1 = true;
+        }
+        if(x == d) {
+            ok2 = true;
+        }
+    }
+    if((ok1 && ok2) || !ok1 && !ok2) cout << "NO" << endl;
+    else if(ok1 || ok2) cout << "YES" << endl;
 }
 
 signed main()

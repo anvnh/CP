@@ -12,15 +12,26 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 const ll MOD = 1e9 + 7;
 
+const int maxN = 1e3;
+const int inf = -1e9;
+
 void solve()
 {
     int n; cin >> n;
-    ll sum = 0;
-    for(int i = 0; i < n; i++)
+    vector<int> x; 
+    vector<int> a(n, 0);
+    for(int i = 0; i < n - 1; i++)
     {
-        sum += i;
+        int k; cin >> k;
+        x.pb(k);
     }
-    cout << sum << endl;
+    a[0] = 1000;
+    for(int i = 1; i < n; i++)
+    {
+        a[i] = a[i - 1] + x[i - 1];
+    }
+    for(auto x : a) cout << x << " ";
+    cout << endl;
 }
 
 signed main()

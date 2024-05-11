@@ -14,13 +14,29 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    int n; cin >> n;
-    ll sum = 0;
-    for(int i = 0; i < n; i++)
+    int n, k, Pb, Ps;      
+    cin >> n >> k >> Pb >> Ps;
+    vector<int> p(n + 1), a(n + 1);
+    for(int i = 1; i <= n; i++) cin >> p[i];
+    for(int i = 1; i <= n; i++) cin >> a[i];
+    int b_curr = 0, s_curr = 0;
+    b_curr += a[Pb];
+    s_curr += a[Ps];
+    k -= 1;
+    while(k--)
     {
-        sum += i;
+        if(k&1) // Bodya
+        {
+            if(a[Pb] < a[p[Pb]]) Pb = p[Pb];
+            b_curr += a[Pb];
+        }
+        else  // Sasha
+        {
+            if(a[Ps] < a[p[Ps]]) Ps = p[Ps];
+            s_curr += a[Ps];
+        }
     }
-    cout << sum << endl;
+    cout << b_curr << " " << s_curr << endl;
 }
 
 signed main()

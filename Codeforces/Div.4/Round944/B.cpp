@@ -14,13 +14,18 @@ const ll MOD = 1e9 + 7;
 
 void solve()
 {
-    int n; cin >> n;
-    ll sum = 0;
-    for(int i = 0; i < n; i++)
-    {
-        sum += i;
+    string s; cin >> s;
+    set<char> st;
+    for (char c : s)
+        st.insert(c);
+    if(sz(st) == 1){
+        return cout << "NO" << endl, void();
     }
-    cout << sum << endl;
+    for(int i = 1; i < sz(s); i++) if(s[i] != s[0]) {
+        swap(s[i], s[0]); 
+        break;
+    }
+    return cout << "YES" << endl << s << endl, void();
 }
 
 signed main()
