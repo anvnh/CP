@@ -21,6 +21,7 @@ int st[4 * maxn];
 
 void build(int id, int l, int r)
 {
+
     if(l == r)
     {
         st[id] = a[l];

@@ -16,10 +16,10 @@ const int N = 1e5 + 10;
 const int INF = 1e9 + 7;
 
 int n, Q;
-vector<ll> a(N);
+vector<int> a(N);
 
 struct Node{
-    ll val, lazy;
+    int val, lazy;
 } nodes[4 * N];
 
 void build(int id, int l, int r)
@@ -32,14 +32,14 @@ void build(int id, int l, int r)
     }
     int mid = (l + r) >> 1;
     build(id * 2, l, mid);
-    build(id * 2 + 1, mid + 1, r);
+    build(id * 2, mid + 1, r);
     nodes[id].val = max(nodes[id * 2].val, nodes[id * 2 + 1].val);
 
 }
 
 void lazy_update(int id)
 {
-    ll t = nodes[id].lazy;
+    int t = nodes[id].lazy;
     nodes[id * 2].lazy += t;
     nodes[id * 2].val += t;
     nodes[id * 2 + 1].lazy += t;
@@ -47,7 +47,7 @@ void lazy_update(int id)
     nodes[id].lazy = 0;
 }
 
-void update(int id, int l, int r, int u, int v, ll val) 
+void update(int id, int l, int r, int u, int v, int val) 
 {
     if(v < l || u > r) return;
     if(u <= l && r <= v) {
@@ -64,7 +64,7 @@ void update(int id, int l, int r, int u, int v, ll val)
     nodes[id].val = max(nodes[id * 2].val, nodes[id * 2 + 1].val);
 }
 
-ll get(int id, int l, int r, int u, int v)
+int get(int id, int l, int r, int u, int v)
 {
     if(v < l || u > r) return -INF;
     if(u <= l && r <= v) return nodes[id].val;
@@ -77,16 +77,14 @@ ll get(int id, int l, int r, int u, int v)
 void solve()
 {
     cin >> n >> Q;
-    for(int i = 1; i <= n; i++) cin >> a[i];
+    // for(int i = 1; i <= n; i++) cin >> a[i];
     // cout << n << " " << Q << endl;
-    // for(int i = 1; i <= n; i++) cout << a[i] << " ";
-    // cout << endl;
-    build(1, 1, n);
+    // build(1, 1, n);
     while(Q--)
     {
         int q, l, r, w;
         cin >> q >> l >> r;
-        if(q == 1) {
+        if(q == 0) {
             cin >> w;
             update(1, 1, n, l, r, w);
         }
@@ -114,3 +112,4 @@ signed main()
     }
     return 0;
 }
+
