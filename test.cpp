@@ -1,37 +1,32 @@
+/**
+    Author: anvnh
+    Created: 2024-06-12 22:29:04
+**/
+
 #include <bits/stdc++.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define ll long long
-#define pb push_back
-#define fi first
-#define se second
-#define endl "\n"
-#define sz(x) (int)(x).size()
-#define all(x) begin(x), end(x)
-#define rall(x) rbegin(x), rend(x)
-#define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
-const ll MOD = 1e9 + 7;
+#define anvnh signed main(void)
 
 void solve()
 {
-      
+    int n; cin >> n;
+    int res = 0;
+    for(int i = 0; i < 2 * n - 1; i++)
+    {
+        int x; cin >> x;
+        res ^= x;
+    }
+    cout << res << "\n";
 }
 
-signed main()
-{
+anvnh {
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
     fastio
     int ntest;
-    ntest = 1;
-    cin >> ntest;
-    while (ntest--)
-    {
-        clock_t z = clock();
-        solve();
-        debug("Total Time: %.7f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
-    }
+    solve();
     return 0;
 }
