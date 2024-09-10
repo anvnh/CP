@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    RyeNyn
 **/
 
 #include <bits/stdc++.h>
@@ -13,7 +13,7 @@ void print(const T& t) {
     for (const auto& element : t) { 
         std::cout << element << " ";
     }
-    std::cout << "}\n";
+    std::cout << std::endl;
 }
 
 #define ll long long
@@ -35,17 +35,45 @@ void print(const T& t) {
 const ll MOD = 1e9 + 7;
 
 void setIO(string s){
-    #ifdef ONLINE_JUDGE
-        freopen((s + ".inp").c_str(), "r", stdin);
-        freopen((s + ".out").c_str(), "w", stdout);
-    #endif
+#ifdef ONLINE_JUDGE
+    freopen((s + ".inp").c_str(), "r", stdin);
+    freopen((s + ".out").c_str(), "w", stdout);
+#endif
+}   
+
+map<ll, ll> sol(int n)
+{
+    map<ll, ll> res;
+    for(ll i = 2; i * i <= n; i++) {
+        if(n % i == 0) {
+            ll cnt = 0;
+            while(n % i == 0) {
+                n /= i;
+                cnt++;
+            }
+            res[i] = cnt;
+        }
+    }
+    if(n > 1) res[n] = 1;
+    return res;
 }
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int a, b;
+    while(cin >> a >> b){
+        map<ll, ll> resa = sol(a);
+        map<ll, ll> resb = sol(b);
+        ll ans = 0;
+        for(auto x : resa){
+            if(resb.find(x.fi) == resb.end()) ans += x.se;
+            else ans += abs(x.se - resb[x.fi]);
+        }
+        for(auto x : resb){
+            if(resa.find(x.fi) == resa.end()) ans += x.se;
+        }
+        cout << ans << nl;
+    }
 }
 
 anvnh {

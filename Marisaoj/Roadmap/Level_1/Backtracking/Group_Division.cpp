@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-09 20:17:12
 **/
 
 #include <bits/stdc++.h>
@@ -41,11 +41,21 @@ void setIO(string s){
     #endif
 }
 
+ll calcSum(vector<int>&a) {
+    ll sum = 0;
+    REP(i, sz(a)) sum += a[i];
+    return sum;
+}
+
+void backtracking(vector<int>&a, int n, int k) 
+{
+}
+
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, k; cin >> n >> k;
+    vector<int> a(n);
+    REP(i, n) cin >> a[i];
 }
 
 anvnh {
@@ -56,7 +66,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

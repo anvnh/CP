@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-19 16:34:16
 **/
 
 #include <bits/stdc++.h>
@@ -41,11 +41,28 @@ void setIO(string s){
     #endif
 }
 
+int moveX[6] = {1, 1, 0, -1, -1, 0};
+int moveY[6] = {1, 0, -1, -1, 0, 1};
+
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    vector<pair<int, int>> vp;
+    for(int i = 0; i < n; i++)
+    {
+        int a, b; cin >> a >> b;
+        vp.pb({a, b});
+    }
+    cout << "YES" << nl << n * 7 << nl;
+    for(int i = 0; i < n; i++) 
+    {
+        cout << vp[i].fi << " " << vp[i].se << " " << 3 << nl;
+        for(int j = 0; j < 6; j++)
+        {
+            // cout << vp[i].fi + moveX[i] << " " << vp[i].se + moveY[i] << " " << 1 << nl;
+            cout << vp[i].fi + moveX[j] << " " << vp[i].se + moveY[j] << " " << 2 << nl;
+        }
+    }
 }
 
 anvnh {
@@ -56,12 +73,10 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
-        clock_t z = clock();
         solve();
-        debug("Total Time: %.7f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
     }
     return 0;
 }

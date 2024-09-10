@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-23 18:34:50
 **/
 
 #include <bits/stdc++.h>
@@ -43,9 +43,12 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int r, g, b; cin >> r >> g >> b;
+    string c; cin >> c;
+    if(c == "Red") return cout << min(b, g) << nl, void();
+    if(c == "Green") return cout << min(r, b) << nl, void();
+    if(c == "Blue") return cout << min(r, g) << nl, void();
+
 }
 
 anvnh {

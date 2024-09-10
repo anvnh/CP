@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-07 20:34:08
 **/
 
 #include <bits/stdc++.h>
@@ -43,9 +43,27 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    setIO("chatgo");
+    int n, m; cin >> n >> m;
+    vector<int> a(n);
+    REP(i, n) cin >> a[i];
+    int l = 0, r = 1e9;
+    int res = -1;
+    while(l <= r) 
+    {
+        int mid = (l + r) >> 1;
+        ll tmp = 0;
+        REP(i, n) if(a[i] >= mid) tmp += (a[i] - mid);
+        if(tmp >= m) {
+            // res = max(res, tmp);
+            res = mid;
+            l = mid + 1;
+        }
+        else {
+            r = mid - 1;
+        }
+    }
+    cout << res << nl;
 }
 
 anvnh {

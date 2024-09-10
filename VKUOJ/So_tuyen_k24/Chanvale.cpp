@@ -1,9 +1,10 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    RyeNyn
 **/
 
 #include <bits/stdc++.h>
+#include <cmath>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -13,7 +14,7 @@ void print(const T& t) {
     for (const auto& element : t) { 
         std::cout << element << " ";
     }
-    std::cout << "}\n";
+    std::cout << std::endl;
 }
 
 #define ll long long
@@ -43,9 +44,8 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    ll n; cin >> n;
+    cout << (n >> 1) * ((n >> 1) + 1) - (n - (n >> 1)) * (n - (n >> 1)) << nl;
 }
 
 anvnh {

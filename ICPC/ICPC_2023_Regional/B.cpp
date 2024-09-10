@@ -43,9 +43,31 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, m; cin >> n >> m;
+    vector<vector<int>> data(n, vector<int>(m));
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            cin >> data[i][j];
+        }
+    }
+    int cnt = 0;
+    for(int i = 0; i < n; i++){
+        int cnt_sol = 0;
+        for(int j = 0; j < m; j++){
+            if(data[i][j]) cnt_sol++;
+        }
+        if(cnt_sol == 0 || cnt_sol == m) {
+            return cout << "NO" << nl, void();
+        }
+    }
+    for(int i = 0; i < m; i++) {
+        int cnt_ok = 0;
+        for(int j = 0; j < n; j++) {
+            if(data[j][i]) cnt_ok++;
+        }
+        if(!cnt_ok) return cout << "NO" << nl, void();
+    }
+    cout << "YES" << nl;
 }
 
 anvnh {
@@ -56,7 +78,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

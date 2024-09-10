@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    RyeNyn
 **/
 
 #include <bits/stdc++.h>
@@ -13,7 +13,7 @@ void print(const T& t) {
     for (const auto& element : t) { 
         std::cout << element << " ";
     }
-    std::cout << "}\n";
+    std::cout << std::endl;
 }
 
 #define ll long long
@@ -41,11 +41,36 @@ void setIO(string s){
     #endif
 }
 
+
+int reverseNum(int n) {
+    int res = 0;
+    while (n) {
+        res = res * 10 + n % 10;
+        n /= 10;
+    }
+    return res;
+}
+
+bool prime(int n){
+    if(n < 2) return false;
+    for(int i = 2; i * i <= n; i++){
+        if(n % i == 0) return false;
+    }
+    return true;
+}
+
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n; cin >> n;   
+    set<int> res;
+    for(int i = 1; i <= n; i++)
+    {
+        if(prime(i)) {
+            int rev = reverseNum(i);
+            if(prime(rev)) res.insert(i);
+        }
+    }
+    for(auto x : res) cout << x << " ";
 }
 
 anvnh {

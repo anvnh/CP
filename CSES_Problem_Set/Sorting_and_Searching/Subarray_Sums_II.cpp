@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-13 11:57:03
 **/
 
 #include <bits/stdc++.h>
@@ -43,9 +43,21 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, x; cin >> n >> x;
+    vector<int> a(n);
+    REP(i, n) cin >> a[i];
+    ll pref = 0;
+    map<ll, ll> mp;
+    ll ans = 0;
+    mp[0] = 1;
+    REP(i, n)
+    {
+        pref += a[i];
+        // cout << pref - x << nl;
+        ans += mp[pref - x];
+        mp[pref]++;
+    }
+    cout << ans << nl;
 }
 
 anvnh {

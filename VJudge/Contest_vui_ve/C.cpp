@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-23 18:34:50
 **/
 
 #include <bits/stdc++.h>
@@ -43,9 +43,47 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, x, y; cin >> n >> x >> y;
+    vector<int> graph[n + 1];
+    for(int i = 1; i < n; i++)
+    {
+        int u, v; cin >> u >> v;
+        graph[u].pb(v);
+        graph[v].pb(u);
+    }
+    // for(int i = 1; i < n; i++){
+    //     cout << i << " : ";
+    //     for(auto x : graph[i]) cout << x << " ";
+    //     cout << nl;
+    // }
+    // direction from node x to y. Eg: 2 -> 1 -> 3 -> 4
+    vector<int> path;
+    vector<int> p(n + 1, 0);
+    queue<int> q;
+    q.push(x);
+    while(!q.empty())
+    {
+        int u = q.front();
+        q.pop();
+        for(auto v : graph[u])
+        {
+            if(p[v] == 0)
+            {
+                p[v] = u;
+                q.push(v);
+            }
+        }
+    }
+    int cur = y;
+    while(cur != x)
+    {
+        path.pb(cur);
+        cur = p[cur];
+    }
+    path.pb(x); 
+    reverse(all(path));
+    for(auto x : path) cout << x << " ";
+    cout << nl;
 }
 
 anvnh {

@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-06 18:55:27
 **/
 
 #include <bits/stdc++.h>
@@ -43,9 +43,31 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, m, k; cin >> n >> m >> k;
+    vector<int> res1;
+    vector<int> res2;
+    vector<int> res3;
+    FOR(i, 1, n) {
+        // calculate f(i)
+        if(i >= k) {
+            res1.pb(i);
+            continue;
+        }
+        if(i <= m) {
+            res2.pb(i);
+            continue;
+        }
+        if(i < k && i > m) {
+            res3.pb(i);
+            continue;
+        }
+    }
+    sort(all(res2));
+    sort(rall(res1));
+    REP(i, sz(res1)) cout << res1[i] << " ";
+    REP(i, sz(res3)) cout << res3[i] << " ";
+    REP(i, sz(res2)) cout << res2[i] << " ";
+    cout << nl;
 }
 
 anvnh {
@@ -56,7 +78,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-23 18:34:50
 **/
 
 #include <bits/stdc++.h>
@@ -41,11 +41,52 @@ void setIO(string s){
     #endif
 }
 
+int moveX[4] = {0, 0, -1, 1};
+int moveY[4] = {-1, 1, 0, 0};
+
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int h, w, n; cin >> h >> w >> n;
+    string t; cin >> t;
+    vector<string> vs;
+    for(int i = 0; i < h; i++)
+    {
+        string s; cin >> s;
+        vs.pb(s);
+    }
+    int res = 0;
+    for(int i = 0; i < h; i++) {
+        for(int j = 0; j < w; j++) {
+            if(vs[i][j] == '.') {
+                int cnt_w = 0;
+                int X = i, Y = j;
+                for(char c : t) {
+                    if(c == 'L') {
+                        if(vs[X][Y - 1] == '#') break;
+                        Y--;
+                        cnt_w++;
+                    }
+                    if(c == 'R') {
+                        if(vs[X][Y + 1] == '#') break;
+                        Y++;
+                        cnt_w++;
+                    }
+                    if(c == 'U') {
+                        if(vs[X - 1][Y] == '#') break;
+                        cnt_w++;
+                        X--;
+                    }
+                    if(c == 'D') {
+                        if(vs[X + 1][Y] == '#') break;
+                        cnt_w++;
+                        X++;
+                    }
+                }
+                if(cnt_w == n) res++; 
+            }
+        }
+    }
+    return cout << res << nl, void();
 }
 
 anvnh {

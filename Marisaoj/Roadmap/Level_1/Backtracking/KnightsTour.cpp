@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-09 20:17:12
 **/
 
 #include <bits/stdc++.h>
@@ -41,11 +41,23 @@ void setIO(string s){
     #endif
 }
 
+bool isValid(int n, int m, int sol[n][m])
+{
+    return -1;
+}
+
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, m; cin >> n >> m;
+    int sol[n][m];
+    int moveX[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
+    int moveY[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
+    REP(i, n) REP(j, m) sol[i][j] = -1;
+    sol[0][0] = 1;
+    REP(i, n) {
+        REP(j, m) cout << sol[i][j] << " ";
+        cout << nl;
+    }
 }
 
 anvnh {

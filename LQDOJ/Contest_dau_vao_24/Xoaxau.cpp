@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-17 14:38:41
 **/
 
 #include <bits/stdc++.h>
@@ -43,9 +43,27 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, k; cin >> n >> k;
+    string s; cin >> s;
+    vector<int> count(26, 0);
+    int res = 0;
+    int l = 0;
+    int uniq = 0;
+    for (int r = 0; r < n; r++) {
+        if (count[s[r] - 'a'] == 0) {
+            uniq++;
+        }
+        count[s[r] - 'a']++;
+        while (uniq > k + 1) {
+            count[s[l] - 'a']--;
+            if (count[s[l] - 'a'] == 0) {
+                uniq--;
+            }
+            l++;
+        }
+        res = max(res, *max_element(count.begin(), count.end()));
+    }
+    cout << res << nl;
 }
 
 anvnh {

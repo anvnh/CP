@@ -1,8 +1,9 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-23 18:34:50
 **/
 
+#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -44,8 +45,29 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    vector<int> a(n);
+    for(int&v : a) cin >> v;
+    vector<int> a1, a2;
+    for(int i = 0; i < n; i++)
+    {
+        if(sz(a1) && sz(a2) && a1.back() >= a[i] && a2.back() >= a[i]) {
+            if(a1.back() > a2.back()) a2.pb(a[i]);
+            else a1.pb(a[i]);
+            continue;
+        }
+        if(a1.empty() || a1.back() >= a[i]) {
+            a1.pb(a[i]); continue;
+        }
+        if(a2.empty() || a2.back() >= a[i]) {
+            a2.pb(a[i]); continue;
+        }
+        if(a1.back() > a2.back()) a2.pb(a[i]);
+        else a1.pb(a[i]);
+    }
+    int res = 0;
+    for(int i = 1; i < sz(a1); i++) if(a1[i] > a1[i - 1]) res++;
+    for(int i = 1; i < sz(a2); i++) if(a2[i] > a2[i - 1]) res++;
+    cout << res << nl;
 }
 
 anvnh {

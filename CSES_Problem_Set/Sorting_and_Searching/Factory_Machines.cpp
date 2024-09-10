@@ -23,6 +23,7 @@ void solve()
         ll cnt = 0;
         for(int v : a) {
             cnt += mid / v;
+            if(cnt >= t) break;
         }
         if(cnt >= t) r = mid - 1;
         else l = mid + 1;

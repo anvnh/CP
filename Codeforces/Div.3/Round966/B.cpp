@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-19 08:08:09
 **/
 
 #include <bits/stdc++.h>
@@ -10,6 +10,7 @@ using namespace std;
 
 template <typename T>
 void print(const T& t) {
+    std::cout << "{ ";
     for (const auto& element : t) { 
         std::cout << element << " ";
     }
@@ -44,8 +45,19 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    vector<int> a(n);
+    for(auto&v : a) cin >> v;
+    vector<bool> occupied(n + 2, false);
+    occupied[a[0]] = 1;
+    for(int i = 1; i < n; i++)
+    {
+        // cout << a[i] << " " << occupied[a[i] - 1] << " " << occupied[a[i] + 1] << nl;
+        if(occupied[a[i] - 1] == false && occupied[a[i] + 1] == false) {
+            return cout << "NO" << nl, void();
+        }
+        occupied[a[i]] = true;
+    }
+    cout << "YES" << nl;
 }
 
 anvnh {
@@ -56,7 +68,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

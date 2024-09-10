@@ -1,0 +1,10 @@
+acadaba
+0123456
+
+k = 1
+l = 3
+r = 6
+unique = 2
+res = max(res, *max_element(count.begin(), count.end())) = 1
+count[2, 1, 0, 0, 0, 0, ...]
+

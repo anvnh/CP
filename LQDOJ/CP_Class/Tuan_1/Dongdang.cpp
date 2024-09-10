@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-20 12:07:55
 **/
 
 #include <bits/stdc++.h>
@@ -41,11 +41,17 @@ void setIO(string s){
     #endif
 }
 
+
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    ll a1, b1; cin >> a1 >> b1;   
+    ll a2, b2; cin >> a2 >> b2;
+    if(a1 > b1) swap(a1, b1);
+    if(a2 > b2) swap(a2, b2);
+    if((a1 / __gcd(a1, b1)) == (a2 / __gcd(a2, b2)) && (b1 / __gcd(a1, b1)) == (b2 / __gcd(a2, b2))) {
+        return cout << "YES" << nl, void();       
+    }
+    cout << "NO" << nl;
 }
 
 anvnh {

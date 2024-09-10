@@ -1,9 +1,10 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-09 20:17:12
 **/
 
 #include <bits/stdc++.h>
+#include <numeric>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -44,8 +45,15 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
+    vector<int> a(n);
+    REP(i, n) cin >> a[i];
     sort(all(a));
+    ll leftSum = 0;
+    REP(i, n - 1) leftSum += a[i];
+    if(leftSum < a[n - 1]) {
+        return cout << a[n - 1] * 2 << nl, void();
+    }
+    return cout << leftSum + a[n - 1] << nl, void();
 }
 
 anvnh {

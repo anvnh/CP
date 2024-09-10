@@ -1,8 +1,9 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    RyeNyn
 **/
 
+#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -13,7 +14,7 @@ void print(const T& t) {
     for (const auto& element : t) { 
         std::cout << element << " ";
     }
-    std::cout << "}\n";
+    std::cout << std::endl;
 }
 
 #define ll long long
@@ -44,8 +45,25 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    vector<int> a(n);
+    for(int&v : a) cin >> v;
+    vector<int> tmp;
+    for (int i = 1; i < n; i++) {
+        tmp.pb(abs(a[i] - a[0]));
+    }
+    int res = tmp[0];
+    for (int i = 1; i < sz(tmp); i++) {
+        res = __gcd(res, tmp[i]);
+    }
+    vector<int> ans;
+    for (int i = 1; i * i <= res; i++) {
+        if (res % i == 0) {
+            if (i > 1) ans.pb(i);
+            if (i * i != res && res / i > 1) ans.pb(res / i);
+        }
+    }
+    sort(all(ans));
+    for(auto x : ans) cout << x << nl;
 }
 
 anvnh {

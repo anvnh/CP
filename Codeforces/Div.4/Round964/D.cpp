@@ -1,9 +1,10 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-06 18:55:27
 **/
 
 #include <bits/stdc++.h>
+#include <pthread.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -43,9 +44,27 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    string s; cin >> s;
+    string t; cin >> t;
+    deque<char> t1;
+    REP(i, sz(t)) {
+        t1.insert(t[i]);
+    }
+    for(int i = 0, j = 0; i < sz(s) && j < sz(t1);) {
+        if(s[i] == '?')
+        {
+
+        }
+        else {
+            if(s[i] == t1[j]) {
+                i++;
+                j++;
+            }
+            else {
+                i++;
+            }
+        }
+    }
 }
 
 anvnh {
@@ -56,7 +75,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

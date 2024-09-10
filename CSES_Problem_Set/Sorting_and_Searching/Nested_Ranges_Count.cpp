@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-13 11:57:03
 **/
 
 #include <bits/stdc++.h>
@@ -44,8 +44,7 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+
 }
 
 anvnh {

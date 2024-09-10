@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-23 18:34:50
 **/
 
 #include <bits/stdc++.h>
@@ -41,11 +41,42 @@ void setIO(string s){
     #endif
 }
 
+struct edg {
+    ll to;
+    ll w;
+};
+
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, m; cin >> n >> m;
+    vector<ll> a(n);
+    for(ll&v : a) cin >> v;
+    vector<vector<edg>> g(n);
+    for(int i = 0; i < m; i++)
+    {
+        int u, v, w; cin >> u >> v >> w;
+        u--; v--;
+        g[u].pb({v, w});
+        g[v].pb({u, w});
+    }
+    vector<ll> dist(2e5 + 10, LLONG_MAX);
+    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
+    dist[0] = a[0];
+    pq.push({dist[0], 0});
+    while (!pq.empty()) {
+        ll d = pq.top().fi;
+        ll node = pq.top().se;
+        pq.pop();
+        if (d > dist[node]) continue;
+        for (auto edge : g[node]) {
+            ll new_d = d + edge.w + a[edge.to];
+            if (new_d < dist[edge.to]) {
+                dist[edge.to] = new_d;
+                pq.push({new_d, edge.to});
+            }
+        }
+    }
+    for(int i = 1; i < n; i++) cout << dist[i] << " ";
 }
 
 anvnh {

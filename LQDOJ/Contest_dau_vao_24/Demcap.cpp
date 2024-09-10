@@ -1,9 +1,10 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-16 20:14:01
 **/
 
 #include <bits/stdc++.h>
+#include <unordered_map>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -12,7 +13,7 @@ template <typename T>
 void print(const T& t) {
     for (const auto& element : t) { 
         std::cout << element << " ";
-    }
+}
     std::cout << "}\n";
 }
 
@@ -43,9 +44,32 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    ll n; cin >> n;
+    unordered_map<ll, ll> mp;
+    unordered_set<ll> st;
+    vector<ll> a(n);
+    for(ll i = 0; i < n; i++) {
+        cin >> a[i];
+        mp[a[i]]++;
+    }
+    for(ll i = 0; i <= 30; i++)
+    {
+        st.insert(1LL << i);
+    }
+    ll cnt = 0;
+    for(ll i = 0; i < n; i++)
+    {
+        mp[a[i]]--;
+        for(auto x : st)
+        {
+            ll tmp = x - a[i];
+            if(mp.find(tmp) != mp.end())
+            {
+                cnt += mp[tmp];
+            }
+        }
+    }
+    cout << cnt << nl;
 }
 
 anvnh {

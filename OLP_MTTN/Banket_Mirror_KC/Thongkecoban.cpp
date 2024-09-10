@@ -1,8 +1,9 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-19 08:08:09
 **/
 
+#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -44,8 +45,21 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
+    vector<int> a(n);
+    double avg = 0;
+    map<int, int> mp;
+    for(auto&v : a){
+        cin >> v;
+        avg += v;
+    }
+    cout << "----" << nl;
+    avg /= n;
+    cout << *max_element(all(a)) << nl;
+    cout << *min_element(all(a)) << nl;
+    cout << fixed << setprecision(10) << avg << nl;
     sort(all(a));
+    cout << a[n >> 1] << nl;
+
 }
 
 anvnh {

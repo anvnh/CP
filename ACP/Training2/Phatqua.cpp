@@ -1,8 +1,9 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-07 20:34:08
 **/
 
+#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -36,16 +37,17 @@ const ll MOD = 1e9 + 7;
 
 void setIO(string s){
     #ifdef ONLINE_JUDGE
-        freopen((s + ".inp").c_str(), "r", stdin);
-        freopen((s + ".out").c_str(), "w", stdout);
+        freopen((s + ".INP").c_str(), "r", stdin);
+        freopen((s + ".OUT").c_str(), "w", stdout);
     #endif
 }
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    setIO("PHATQUA");
+    int n, k; cin >> n >> k;
+    vector<int> a(n);
+    
 }
 
 anvnh {

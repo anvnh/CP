@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-20 12:07:55
 **/
 
 #include <bits/stdc++.h>
@@ -13,7 +13,6 @@ void print(const T& t) {
     for (const auto& element : t) { 
         std::cout << element << " ";
     }
-    std::cout << "}\n";
 }
 
 #define ll long long
@@ -44,8 +43,19 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    vector<ll> a(n + 1);
+    for(int i = 1; i <= n; i++) cin >> a[i];
+    vector<ll> prefix(n + 1, 0);
+    for(int i = 1; i <= n; i++) {
+        prefix[i] = (prefix[i - 1] % MOD + a[i] % MOD) % MOD;
+    }
+    // print(prefix);
+    ll ans = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        ans = (ans % MOD + (prefix[n] - prefix[i] + MOD) % MOD * a[i] % MOD) % MOD;
+    }
+    cout << ans << nl;
 }
 
 anvnh {

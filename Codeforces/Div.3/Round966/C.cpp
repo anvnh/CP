@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-19 08:08:09
 **/
 
 #include <bits/stdc++.h>
@@ -44,8 +44,13 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    vector<int> a(n);
+    REP(i, n) cin >> a[i];
+    int m; cin >> m;
+    while(m--)
+    {
+
+    }
 }
 
 anvnh {
@@ -56,7 +61,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    // cin >> ntest;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

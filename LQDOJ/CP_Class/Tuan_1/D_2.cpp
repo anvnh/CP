@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-23 18:34:50
 **/
 
 #include <bits/stdc++.h>
@@ -44,8 +44,29 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int a = MOD, b = MOD;
+    int res = 0;
+    while(n--)
+    {
+        int x; cin >> x;
+        if(a >= x && b >= x) {
+            if(a > b) b = x;
+            else a = x;
+            continue;
+        }
+        if(a >= x) {
+            a = x;
+            continue;
+        }
+        if(b >= x) {
+            b = x;
+            continue;
+        }
+        res++;
+        if(a > b) b = x;
+        else a = x;
+    }
+    cout << res << nl;
 }
 
 anvnh {

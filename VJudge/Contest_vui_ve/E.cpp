@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    Created: 2024-08-23 18:34:50
 **/
 
 #include <bits/stdc++.h>
@@ -43,10 +43,17 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
-}
+    int n, k; cin >> n >> k;
+    vector<int> a(k); for(int&v : a) cin >> v;
+    vector<ll> dp(n + 1, 0);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j < k; j++) {
+            if (a[j] > i) break;
+            dp[i] = max(dp[i], i - dp[i - a[j]]);
+        }
+    }
+    cout << dp[n] << endl;
+}   
 
 anvnh {
 #ifndef ONLINE_JUDGE

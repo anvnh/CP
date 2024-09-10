@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    RyeNyn
 **/
 
 #include <bits/stdc++.h>
@@ -13,7 +13,7 @@ void print(const T& t) {
     for (const auto& element : t) { 
         std::cout << element << " ";
     }
-    std::cout << "}\n";
+    std::cout << std::endl;
 }
 
 #define ll long long
@@ -43,9 +43,23 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    int n, k; cin >> n >> k;
+    map<int, int> mp;
+    REP(i, n) {
+        int x; cin >> x;
+        mp[x]++;
+    }
+    ll res = 0;
+    for(auto x : mp)
+    {
+        ll tmp = k - (1 << (x.fi == 1 ? 0 : x.fi));
+        if(mp[tmp]) {
+            res += x.se * mp[tmp];
+            x.se = 0;
+            mp[tmp] = 0;
+        }
+    }
+    cout << res << nl;
 }
 
 anvnh {

@@ -1,6 +1,6 @@
 /**
     Author: anvnh
-    Created: 2024-08-19 13:41:38
+    RyeNyn
 **/
 
 #include <bits/stdc++.h>
@@ -13,7 +13,7 @@ void print(const T& t) {
     for (const auto& element : t) { 
         std::cout << element << " ";
     }
-    std::cout << "}\n";
+    std::cout << std::endl;
 }
 
 #define ll long long
@@ -43,9 +43,13 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n); 
-    sort(all(a));
+    ll a, b, c, d; cin >> a >> b >> c >> d;   
+    ll g = __gcd(a, b); a /= g; b /= g;
+    g = __gcd(c, d); c /= g; d /= g;
+    ll e = a * d + b * c;
+    ll f = b * d;
+    g = __gcd(e, f); e /= g; f /= g;
+    cout << e << " " << f << nl;
 }
 
 anvnh {
