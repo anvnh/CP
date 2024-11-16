@@ -47,9 +47,29 @@ void setIO(string s){
     #endif
 }
 
+struct Point{
+    int x, y, z;
+};
+
+bool compare(const Point& a, const Point& b) {
+    if(a.x != b.x) return a.x < b.x;
+    else if(a.y != b.y) return a.y < b.y;
+    else return a.z < b.z;
+}
+
 void solve()
 {
-    
+    int n; get(n);
+    vector<Point> points;
+    while(n--)
+    {
+        Point a; get(a.x, a.y, a.z);
+        points.pb(a);
+    }
+    sort(all(points), compare);
+    for(auto [x, y, z] : points) {
+        put(x, y, z);
+    }
 }
 
 anvnh {
@@ -60,7 +80,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

@@ -49,7 +49,13 @@ void setIO(string s){
 
 void solve()
 {
-    
+    int n; cin >> n;
+    map<int, int> mp;
+    for(int i = 0; i < 2 * n; i++) {
+        int bit; cin >> bit;
+        mp[bit]++;
+    }
+    put(mp[0] % 2 * mp[1] % 2, min(mp[0], mp[1]));
 }
 
 anvnh {
@@ -69,3 +75,4 @@ anvnh {
     }
     return 0;
 }
+

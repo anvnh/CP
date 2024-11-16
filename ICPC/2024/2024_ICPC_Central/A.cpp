@@ -18,10 +18,7 @@ void print(const T& t) {
 template<typename... T>
 void get(T&... args) { ((cin >> args), ...);}
 template<typename... T>
-void put(T&&... args) {
-   ((std::cout << args << ' '), ...);
-   std::cout << '\n';
-}
+void put(T&&... args) { ((cout << args << " "), ...);}
 #define ll long long
 #define pb push_back
 #define fi first
@@ -49,7 +46,32 @@ void setIO(string s){
 
 void solve()
 {
-    
+    int n, w, h;
+    cin >> n >> w >> h;
+    vector<pair<int, int>> items(n);
+    for (int i = 0; i < n; i++) {
+        get(items[i].fi, items[i].se);
+    }
+    sort(items.begin(), items.end(), [](const pair<int, int>& a, const pair<int, int>& b) {
+        return (double)a.second / a.first > (double)b.second / b.first;
+    });
+    int tot = 0;
+    int tot_wei = 0;
+    vector<bool> used(n, false);
+    for (int i = 0; i < n; i++) {
+        if (tot_wei + items[i].fi <= w && !used[i]) {
+            tot += items[i].se;
+            tot_wei += items[i].fi;
+            used[i] = true;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        if (items[i].fi <= h && !used[i]) {
+            tot += items[i].second;
+            break;
+        }
+    }
+    cout << tot << endl;
 }
 
 anvnh {
@@ -60,7 +82,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();
@@ -69,3 +91,4 @@ anvnh {
     }
     return 0;
 }
+

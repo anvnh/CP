@@ -19,8 +19,8 @@ template<typename... T>
 void get(T&... args) { ((cin >> args), ...);}
 template<typename... T>
 void put(T&&... args) {
-   ((std::cout << args << ' '), ...);
-   std::cout << '\n';
+((cout << args << ' '), ...);
+cout << '\n';
 }
 #define ll long long
 #define pb push_back
@@ -49,7 +49,7 @@ void setIO(string s){
 
 void solve()
 {
-    
+       
 }
 
 anvnh {

@@ -4,6 +4,7 @@
 **/
 
 #include <bits/stdc++.h>
+#include <cmath>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -49,7 +50,12 @@ void setIO(string s){
 
 void solve()
 {
-    
+    int a, b, c; get(a, b, c);
+    if(c == a) return cout << "YES" << nl, void();
+    if(c < a) return cout << "NO" << nl, void();
+    if(c - a == 1) return cout << "NO" << nl, void();
+    if((c - a) % b <= 1) return cout << "YES" << nl, void();
+    put("NO");
 }
 
 anvnh {

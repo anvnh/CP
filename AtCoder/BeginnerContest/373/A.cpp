@@ -15,19 +15,13 @@ void print(const T& t) {
     }
     std::cout << std::endl;
 }
-template<typename... T>
-void get(T&... args) { ((cin >> args), ...);}
-template<typename... T>
-void put(T&&... args) {
-   ((std::cout << args << ' '), ...);
-   std::cout << '\n';
-}
+
 #define ll long long
 #define pb push_back
 #define fi first
 #define se second
-#define forn(i, a, b) for(int i = (a), _b = (b); i <= _b; ++i)
-#define rep(i, a, b) for(int i = (a), _b = (b); i < _n; ++i)
+#define FOR(i, a, b) for(int i = (a), _b = (b); i <= _b; ++i)
+#define REP(i, n) for(int i = 0, _n = (n); i < _n; ++i)
 #define MASK(i) (1LL << (i))
 #define BIT(x, i) (((x) >> (i)) & 1)
 #define SET_ON(x, i) ((x) | MASK(i))
@@ -49,7 +43,13 @@ void setIO(string s){
 
 void solve()
 {
-    
+    int cnt = 0;
+    for(int i = 1; i <= 12; i++)
+    {
+        string s; cin >> s;
+        if(i == sz(s)) cnt++;
+    }
+    cout << cnt << nl;
 }
 
 anvnh {
@@ -60,7 +60,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

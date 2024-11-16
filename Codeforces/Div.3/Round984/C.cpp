@@ -49,7 +49,14 @@ void setIO(string s){
 
 void solve()
 {
-    
+    string s; cin >> s;
+    int q; cin >> q;
+    while(q--)
+    {
+        int i; char v; 
+        i--;
+        get(i, v); s[i] = v;
+    }
 }
 
 anvnh {

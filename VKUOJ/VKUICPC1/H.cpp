@@ -47,9 +47,61 @@ void setIO(string s){
     #endif
 }
 
+ll check(ll n)
+{
+    while(n > 0) {
+        if(n % 10 == 9) return true;
+        n /= 10;
+    }
+    return false;
+}
+
+ll countToN(ll n) {
+    if (n == 0) return 0;
+    
+    vector<ll> digits;
+    ll temp = n;
+    while (temp) {
+        digits.push_back(temp % 10);
+        temp /= 10;
+    }
+    reverse(all(digits));
+    
+    ll len = digits.size();
+    ll count = 0;
+    ll prefix = 0;
+    
+    for (int i = 0; i < len; i++) {
+        ll curr_digit = digits[i];
+        if (i > 0) {
+            count += prefix * powl(9, len - i - 1);
+        }
+        
+        if (curr_digit == 9) {
+            break;
+        }
+        if (i == len - 1) {
+            count += 1;
+        } else {
+            count += curr_digit * powl(9, len - i - 1);
+        }
+        
+        prefix = prefix * 10 + curr_digit;
+    }
+    ll divisibleBy9 = n / 9;
+    for (ll i = 1; i <= divisibleBy9; i++) {
+        if (!check(i * 9) && i * 9 <= n) {
+            count--;
+        }
+    }
+    
+    return count;
+}
+
 void solve()
 {
-    
+    int m, n; get(m, n);   
+    put(countToN(n) - countToN(m - 1));
 }
 
 anvnh {

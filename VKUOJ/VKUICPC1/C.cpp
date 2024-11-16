@@ -40,16 +40,49 @@ void put(T&&... args) {
 #define INF 0x3f3f3f3f
 const ll MOD = 1e9 + 7;
 
-void setIO(string s){
-    #ifdef ONLINE_JUDGE
-        freopen((s + ".inp").c_str(), "r", stdin);
-        freopen((s + ".out").c_str(), "w", stdout);
-    #endif
+const int N = 1e6 + 6;
+
+vector<int> graph[N];
+vector<bool> visited(N);
+
+void DFS(int root)
+{
+    visited[root] = true;
+    for(auto v : graph[root]) {
+        if(!visited[v]) {
+            visited[v] = true;
+        }
+    }
 }
 
 void solve()
 {
-    
+    int n, k; get(n, k);
+    for(int i = 1; i <= k; i++)
+    {
+        int a, b; get(a, b);
+        graph[a].pb(b);
+        graph[b].pb(a);
+    }
+    visited.assign(N, false);
+    DFS(1);
+    bool ok = true;
+    for(int i = 1; i <= n; i++) if(!visited[i]) {ok = false; break;}
+    if(ok) {
+        cout << "-" << k - n + 1 << nl;
+    }
+    else {
+        int conn = 0;
+        visited.assign(N, false);
+        for(int i = 1; i <= n; i++)
+        {
+            if(!visited[i]) {
+                conn++;
+                DFS(i);
+            }
+        }
+        cout << "+" << conn - 1 << nl;
+    }
 }
 
 anvnh {
@@ -60,7 +93,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

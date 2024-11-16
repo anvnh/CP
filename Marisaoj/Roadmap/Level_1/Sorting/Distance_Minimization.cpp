@@ -4,6 +4,7 @@
 **/
 
 #include <bits/stdc++.h>
+#include <pthread.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -47,9 +48,30 @@ void setIO(string s){
     #endif
 }
 
+struct Point{
+    ll x, y;
+};
+
+bool comp(Point& a, Point& b) {
+    return a.x < b.x;
+}
+
 void solve()
 {
-    
+    ll n; get(n);
+    vector<Point> points;
+    for(auto i = 0; i < n; i++) {
+        Point p; get(p.x, p.y);
+        points.pb(p);
+    }
+    sort(all(points), comp);
+    ll med = (n&1 ? (n >> 1) : (n >> 1) - 1);
+    ll a = points[med].x, b = points[med].y;
+    ll res = 0;
+    for(auto [x, y] : points) {
+        res += (abs(a - x) + abs(b - y));
+    }
+    put(res);
 }
 
 anvnh {
@@ -60,7 +82,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

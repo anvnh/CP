@@ -49,7 +49,13 @@ void setIO(string s){
 
 void solve()
 {
-    
+    int q; cin >> q;
+    while(q--)
+    {
+        int ty, l, r;
+        get(ty, l , r);
+
+    }
 }
 
 anvnh {
@@ -60,7 +66,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

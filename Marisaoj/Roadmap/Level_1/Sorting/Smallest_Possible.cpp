@@ -4,6 +4,7 @@
 **/
 
 #include <bits/stdc++.h>
+#include <pthread.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -49,7 +50,12 @@ void setIO(string s){
 
 void solve()
 {
-    
+    string n; get(n);
+    sort(all(n));
+    for(int i = sz(n); i >= 0; i--){
+        if(n[i] - '0' == 0) swap(n[i], n[i + 1]);
+    }
+    put(n);
 }
 
 anvnh {
@@ -60,7 +66,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

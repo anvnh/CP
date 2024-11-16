@@ -47,9 +47,54 @@ void setIO(string s){
     #endif
 }
 
+
+ll find(vector<vector<int>>&mt, int k) {
+    int N = sz(mt);
+    int M = sz(mt[0]);
+    ll res = 0;
+    
+    vector<vector<ll>> rowSum(N, vector<ll>(M + 1, 0));
+    for(int i = 0; i < N; i++) {
+        for(int j = 1; j <= M; j++) {
+            rowSum[i][j] = rowSum[i][j-1] + mt[i][j-1];
+        }
+    }
+    
+    for(int j = 1; j <= M; j++) {
+        for(int start = 0; start < j; start++) {
+            vector<ll> colSum(N);
+            for(int i = 0; i < N; i++) {
+                colSum[i] = rowSum[i][j] - rowSum[i][start];
+            }
+            unordered_map<ll, ll> prefixMod;
+            prefixMod[0] = 0;
+            ll curr = 0;
+            
+            for(int i = 0; i < N; i++) {
+                curr += colSum[i];
+                ll mod = ((curr % k) + k) % k;
+                if(prefixMod.count(mod)) {
+                    res = max(res, curr - prefixMod[mod]);
+                }
+                if(!prefixMod.count(mod) || prefixMod[mod] > curr) {
+                    prefixMod[mod] = curr;
+                }
+            }
+        }
+    }
+    
+    return res;
+}
 void solve()
 {
-    
+    int n, m, k; get(n, m, k);   
+    vector<vector<int>> a(n, vector<int>(m));
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            get(a[i][j]);
+        }
+    }
+    put(find(a, k));
 }
 
 anvnh {
@@ -60,7 +105,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

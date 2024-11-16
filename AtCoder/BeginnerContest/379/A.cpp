@@ -49,7 +49,8 @@ void setIO(string s){
 
 void solve()
 {
-    
+    string n; cin >> n;
+    put(n[1] + n[0]  )
 }
 
 anvnh {

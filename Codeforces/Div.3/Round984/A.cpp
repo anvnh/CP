@@ -49,7 +49,16 @@ void setIO(string s){
 
 void solve()
 {
-    
+    int n; cin >> n;
+    vector<int> a(n);
+    for(int&v : a) cin >> v;
+    for(int i = 1; i < n; i++) {
+        if(abs(a[i] - a[i - 1]) != 5 && abs(a[i] - a[i - 1]) != 7) {
+            return put("NO"), void();
+        }
+        // put(abs(a[i] - a[i - 1]));
+    }
+    put("YES");
 }
 
 anvnh {

@@ -18,10 +18,7 @@ void print(const T& t) {
 template<typename... T>
 void get(T&... args) { ((cin >> args), ...);}
 template<typename... T>
-void put(T&&... args) {
-   ((std::cout << args << ' '), ...);
-   std::cout << '\n';
-}
+void put(T&&... args) { ((cout << args << " "), ...);}
 #define ll long long
 #define pb push_back
 #define fi first
@@ -49,7 +46,21 @@ void setIO(string s){
 
 void solve()
 {
-    
+    int m,n; get(m, n);
+    int p, q; get(p, q);
+    vector<pair<int, int>> offsets = {
+        {-1, -1}, {-1, 0}, {-1, 1},
+        {0, -1}, {0, 1}, {1, -1},  {1, 0},  {1, 1}
+    };
+    int count = 0;
+    for (const auto& offset : offsets) {
+        int new_p = p + offset.first;
+        int new_q = q + offset.second;
+        if (1 <= new_p && new_p <= m && 1 <= new_q && new_q <= n) {
+            count++;
+        }
+    }
+    put(count);
 }
 
 anvnh {
@@ -60,7 +71,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

@@ -4,6 +4,7 @@
 **/
 
 #include <bits/stdc++.h>
+#include <pthread.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -47,9 +48,33 @@ void setIO(string s){
     #endif
 }
 
+struct bottle{
+    int b, c; 
+};
+
+bool compare(const bottle& a, const bottle& b) {
+    return a.c > b.c;
+}
+
 void solve()
 {
-    
+    int n, k; get(n, k);
+    map<int, int> mp;
+    for(int i = 0; i < k; i++) {
+        int b, c; get(b, c);
+        mp[b] += c;
+    }
+    vector<bottle> vec;
+    for(auto&[x, y] : mp) {
+        vec.pb({x, y});
+    }
+    sort(all(vec), compare);
+    ll res = 0;
+    for(int i = 0; i < sz(vec) && n > 0; i++){
+        res += vec[i].c;
+        n--;
+    }
+    put(res);
 }
 
 anvnh {

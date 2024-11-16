@@ -18,10 +18,7 @@ void print(const T& t) {
 template<typename... T>
 void get(T&... args) { ((cin >> args), ...);}
 template<typename... T>
-void put(T&&... args) {
-   ((std::cout << args << ' '), ...);
-   std::cout << '\n';
-}
+void put(T&&... args) { ((cout << args << " "), ...);}
 #define ll long long
 #define pb push_back
 #define fi first

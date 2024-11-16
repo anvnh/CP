@@ -15,19 +15,13 @@ void print(const T& t) {
     }
     std::cout << std::endl;
 }
-template<typename... T>
-void get(T&... args) { ((cin >> args), ...);}
-template<typename... T>
-void put(T&&... args) {
-   ((std::cout << args << ' '), ...);
-   std::cout << '\n';
-}
+
 #define ll long long
 #define pb push_back
 #define fi first
 #define se second
-#define forn(i, a, b) for(int i = (a), _b = (b); i <= _b; ++i)
-#define rep(i, a, b) for(int i = (a), _b = (b); i < _n; ++i)
+#define FOR(i, a, b) for(int i = (a), _b = (b); i <= _b; ++i)
+#define REP(i, n) for(int i = 0, _n = (n); i < _n; ++i)
 #define MASK(i) (1LL << (i))
 #define BIT(x, i) (((x) >> (i)) & 1)
 #define SET_ON(x, i) ((x) | MASK(i))
@@ -39,6 +33,7 @@ void put(T&&... args) {
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define INF 0x3f3f3f3f
 const ll MOD = 1e9 + 7;
+const int N = 2e5 + 7;
 
 void setIO(string s){
     #ifdef ONLINE_JUDGE
@@ -47,9 +42,43 @@ void setIO(string s){
     #endif
 }
 
+vector<pair<int, int>> graph[N];
+vector<bool> vis(N, false);
+vector<ll> f(N, 0);
+
+void dfs(int root) 
+{
+    stack<int> st;
+    st.push(root);
+    vis[root] = true;
+    while (!st.empty())
+    {
+        int u = st.top(); st.pop();
+        for(auto [v, w] : graph[u]){
+            if(!vis[v]){
+                vis[v] = true;
+                f[v] = f[u] + w;
+                st.push(v);
+            }
+        }
+    }
+}
+
 void solve()
 {
-    
+    int n, m; cin >> n >> m;   
+    FOR(i, 1, m)
+    {
+        int u, v, w; cin >> u >> v >> w;
+        graph[u].pb({v, w});
+        graph[v].pb({u, -w});
+    }
+    FOR(i, 1, n) {
+        if(!vis[i]) {
+            dfs(i);
+        }
+    }
+    FOR(i, 1, n) cout << f[i] << " ";
 }
 
 anvnh {
@@ -60,7 +89,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

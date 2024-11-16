@@ -47,9 +47,22 @@ void setIO(string s){
     #endif
 }
 
+bool comp(string& a, string& b)
+{
+    return a + b > b + a;
+}
+
 void solve()
 {
-    
+    int n; get(n);
+    vector<string> a(n);
+    for(auto&v : a) cin >> v;
+    sort(all(a), comp);
+    string res = "";
+    for(auto& x : a){
+        res += x;
+    }
+    put(res);
 }
 
 anvnh {
@@ -60,7 +73,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

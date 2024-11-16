@@ -49,7 +49,11 @@ void setIO(string s){
 
 void solve()
 {
-    
+    int n, k; get(n, k);
+    if(n == 1) return cout << 1 << nl << 1 << nl, void();
+    if(k == n || k == 1) return cout << -1 << nl, void();
+    if(k == (n + 1) / 2) return cout << 3 << nl << 1 << " " << 2 << " " << n << nl, void();
+    cout << 3 << nl << 1 << " " << k << " " << k + 1 << nl;
 }
 
 anvnh {
