@@ -44,7 +44,18 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    cout << n << nl;
+    vector<int> a(n);
+    for(int&v : a) cin >> v;
+    // Maximum absolute sum of subarray
+    vector<int> pre(n + 1);
+    for(int i = 1; i <= n; i++) pre[i] = pre[i - 1] + a[i - 1];
+    int ans = 0;
+    for(int i = 1; i <= n; i++) {
+        for(int j = i; j <= n; j++) {
+            ans = max(ans, abs(pre[j] + pre[i - 1]));
+        }
+    }
+    cout << ans << nl;
 }
 
 anvnh {
@@ -55,7 +66,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

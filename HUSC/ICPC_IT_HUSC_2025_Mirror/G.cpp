@@ -41,10 +41,25 @@ void setIO(string s){
     #endif
 }
 
+ll lcm() {
+    ll res = 1;
+    for (int i = 2; i <= 10; ++i) {
+        ll a = res;
+        ll b = i;
+        while (b) {
+            ll temp = b;
+            b = a % b;
+            a = temp;
+        }
+        res = (res / a) * i;
+    }
+    return res;
+}
+
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    ll x; cin >> x;
+    cout << (x / lcm()) << nl;
 }
 
 anvnh {
@@ -55,7 +70,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

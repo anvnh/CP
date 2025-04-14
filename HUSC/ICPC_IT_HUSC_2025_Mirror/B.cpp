@@ -43,8 +43,24 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    if (a == b && c == d)
+    {
+        cout << "YES" << nl;
+    }
+    else if (a == c && b == d)
+    {
+        cout << "YES" << nl;
+    }
+    else if (a == d && b == c)
+    {
+        cout << "YES" << nl;
+    }
+    else
+    {
+        cout << "NO" << nl;
+    }
 }
 
 anvnh {

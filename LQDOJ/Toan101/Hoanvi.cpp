@@ -43,8 +43,13 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+  int n; cin >> n;
+  int ans = 1;
+  for(int i = 1; i <= n; i++)
+  {
+    ans = (ans % MOD * i % MOD) % MOD;
+  }
+  cout << ans << nl;
 }
 
 anvnh {
@@ -55,7 +60,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

@@ -41,10 +41,41 @@ void setIO(string s){
     #endif
 }
 
+ll power(ll base, ll exp) {
+    ll res = 1;
+    base %= MOD;
+    while (exp > 0) {
+        if (exp % 2 == 1) res = (res * base) % MOD;
+        base = (base * base) % MOD;
+        exp /= 2;
+    }
+    return res;
+}
+
+ll inverse(ll n) {
+    return power(n, MOD - 2);
+}
+
+ll A(int n, int k) {
+    if (k < 0 || k > n) {
+        return 0;
+    }
+    if (k == 0) {
+        return 1;
+    }
+
+    ll res= 1;
+    for (int i = 0; i < k; ++i) {
+        res = (res* (n - i)) % MOD;
+    }
+    return res;
+}
+
+
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    int n, k; cin >> n >> k;
+    cout << A(n, k) % MOD;
 }
 
 anvnh {
@@ -55,7 +86,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

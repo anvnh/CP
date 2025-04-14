@@ -4,6 +4,7 @@
 **/
 
 #include <bits/stdc++.h>
+#include <string>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -41,10 +42,48 @@ void setIO(string s){
     #endif
 }
 
+string fractionToDecimal(long numerator, long denominator) {
+    if (numerator == 0)
+        return "0";
+    string ans = "";
+    if (numerator > 0 ^ denominator > 0)
+        ans += '-';
+    long num = labs(numerator);
+    long den = labs(denominator);
+
+    long integer = num / den;
+    long fraction = num % den;
+    ans += to_string(integer);
+
+    if (fraction == 0) {
+        return ans;
+    }
+    ans += '.';
+
+    unordered_map<long, long> ump;
+
+    while (fraction) {
+        if (ump.find(fraction) != ump.end()) {
+            int pos = ump[fraction];
+            ans.insert(pos, "(");
+            ans += ")";
+            break;
+        } else {
+            ump[fraction] = ans.length();
+            fraction *= 10;
+            integer = fraction / den;
+            fraction = fraction % den;
+            ans += to_string(integer);
+        }
+    }
+
+    return ans;
+}
+
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    int a, b; cin >> a >> b;
+    cout << fractionToDecimal(a, b);
 }
 
 anvnh {
@@ -55,7 +94,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

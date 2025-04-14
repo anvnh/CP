@@ -20,7 +20,7 @@ void print(const T& t) {
 #define pb push_back
 #define fi first
 #define se second
-#define FOR(i, a, b) for(int i = (a), _b = (b); i <= _b; ++i)
+#define FOR(i, a, b) for(int i = (a), _b = (b); i <= _b; ++i) 
 #define REP(i, n) for(int i = 0, _n = (n); i < _n; ++i)
 #define MASK(i) (1LL << (i))
 #define BIT(x, i) (((x) >> (i)) & 1)
@@ -43,8 +43,7 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    
 }
 
 anvnh {

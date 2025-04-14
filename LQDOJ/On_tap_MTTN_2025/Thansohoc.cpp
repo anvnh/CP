@@ -4,6 +4,7 @@
 **/
 
 #include <bits/stdc++.h>
+#include <cstdio>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -33,18 +34,36 @@ void print(const T& t) {
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define INF 0x3f3f3f3f
 const ll MOD = 1e9 + 7;
+const int MAXN = 1e6 + 5;
 
 void setIO(string s){
     #ifdef ONLINE_JUDGE
         freopen((s + ".inp").c_str(), "r", stdin);
         freopen((s + ".out").c_str(), "w", stdout);
     #endif
+
+}
+
+map<int, int> mp;
+
+int sol(int n)
+{
+    if(mp.count(n)) return mp[n];
+    int ans = 0;
+    for(int r = 2; r * r <= n; r++){
+        if(n % r == 0) {
+            int p = n / r;
+            ans = max(ans, (r + p) - sol(r) - sol(p));
+        }
+    }
+    mp[n] = ans;
+    return ans;
 }
 
 void solve()
 {
     int n; cin >> n;
-    cout << n << nl;
+    cout << sol(n) << nl;
 }
 
 anvnh {
@@ -55,7 +74,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

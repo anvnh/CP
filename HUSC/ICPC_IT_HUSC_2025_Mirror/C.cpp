@@ -43,8 +43,8 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    ll n, m; cin >> n >> m;
+    cout << n * m << nl;
 }
 
 anvnh {

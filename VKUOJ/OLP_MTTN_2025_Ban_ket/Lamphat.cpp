@@ -4,6 +4,8 @@
 **/
 
 #include <bits/stdc++.h>
+#include <cwchar>
+#include <pthread.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -43,8 +45,24 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    int n, m; cin >> n >> m;
+    vector<int> a(n);
+    int curr = 1;
+    int cnt = 0;
+    for(int&v : a) cin >> v;
+    while(true)
+    {
+        if(curr == m + 1)
+            return cout << cnt << nl, void();
+        for(int i = 0; i < n; i++)
+        {
+            if(curr == a[i]) 
+            {
+                curr++;
+            }
+        }
+        cnt++;
+    }
 }
 
 anvnh {
@@ -55,7 +73,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

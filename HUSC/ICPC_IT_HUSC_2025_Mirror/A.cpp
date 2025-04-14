@@ -44,7 +44,10 @@ void setIO(string s){
 void solve()
 {
     int n; cin >> n;
-    cout << n << nl;
+    vector<int> a(n);
+    for (int &x : a) cin >> x;
+    sort(all(a));
+    cout << a[n - 1 / 2] << nl;
 }
 
 anvnh {

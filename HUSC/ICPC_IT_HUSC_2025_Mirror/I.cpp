@@ -4,6 +4,7 @@
 **/
 
 #include <bits/stdc++.h>
+#include <pthread.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -11,9 +12,9 @@ using namespace std;
 template <typename T>
 void print(const T& t) {
     for (const auto& element : t) { 
-        std::cout << element << " ";
+        cout << element << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 #define ll long long
@@ -43,8 +44,44 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    int l = 1, r = n;
+    int res = n;
+    while (l <= r) {
+        int mid = (l + r) >> 1;
+        int X = mid;
+        vector<int> tmp = a;
+        int times = 0;
+        bool can = true;
+        for (int i = 0; i < n && times < k; i++) {
+            if (tmp[i] == 1) {
+                int end = min(i + X - 1, n - 1);
+                for (int j = i; j <= end; j++) {
+                    tmp[j] = 0;
+                }
+                times++;
+            }
+        }
+        bool off = true;
+        for (int i = 0; i < n; i++) {
+            if (tmp[i] == 1) {
+                off = false;
+                break;
+            }
+        }
+        if (off) {
+            res = X;
+            r = mid - 1;
+        } else {
+            l = mid + 1;
+        }
+    }
+    cout << res << endl;
 }
 
 anvnh {
@@ -55,7 +92,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();

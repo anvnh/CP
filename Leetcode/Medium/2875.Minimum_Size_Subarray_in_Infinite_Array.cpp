@@ -41,10 +41,23 @@ void setIO(string s){
     #endif
 }
 
+int minSizeSubarray(vector<int>& nums, int target) {
+    int sum = 0;
+    for(auto x : nums) sum += x;
+    int q = target / sum;
+    int rem = target % sum;
+    if( !rem ) {
+        return q * nums.size();
+    }
+
+    return -1;
+}
+
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    vector<int> a = {1,2,3};
+    int target = 8;
+    cout << minSizeSubarray(a, target);
 }
 
 anvnh {
