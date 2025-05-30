@@ -3,6 +3,7 @@
     RyeNyn
 **/
 
+#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -43,8 +44,28 @@ void setIO(string s){
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n << nl;
+    map<char, int> mp;
+    mp['I'] = 1;
+    mp['V'] = 5;
+    mp['X'] = 10;
+    mp['L'] = 50;
+    mp['C'] = 100;
+    mp['D'] = 500;
+    mp['M'] = 1000;
+    string s; cin >> s;
+    int res = 0;
+    int curr_val = 0;
+    for(int i = 0; i < s.size();) {
+        if(mp[s[i]] >= mp[s[i + 1]]) {
+            res += mp[s[i]];
+            i++;
+        } else {
+            curr_val = mp[s[i + 1]] - mp[s[i]];
+            res += curr_val;
+            i += 2;
+        }
+    }
+    cout << res << nl;
 }
 
 anvnh {
@@ -55,7 +76,7 @@ anvnh {
     fastio
     int ntest;
     ntest = 1;
-    cin >> ntest;
+    // cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();
