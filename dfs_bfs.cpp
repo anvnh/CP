@@ -3,9 +3,7 @@
     RyeNyn
 **/
 
-#include <algorithm>
 #include <bits/stdc++.h>
-#include <climits>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -43,52 +41,53 @@ void setIO(string s){
     #endif
 }
 
-double asd(vector<int>& nums1, vector<int>& nums2) {
-    int m = nums1.size();
-    int n = nums2.size();
-    int i = 0, j = 0;
-    vector<int> res;
-    while(i < m && j < n) {
-        if(nums1[i] < nums2[j]) {
-            res.push_back(nums1[i]);
-            i++;
-        } else if(nums1[i] > nums2[j]) {
-            res.push_back(nums2[j]);
-            j++;
-        } else {
-            res.push_back(nums1[i]);
-            res.push_back(nums2[j]);
-            i++;
-            j++;
+void dfs(int root, vector<int> edge[], vector<bool>& visited) {
+    visited[root] = true;
+    cout << root << " ";
+
+    for (int v : edge[root]) {
+        if (!visited[v]) {
+            dfs(v, edge, visited);
         }
-    }
-    while(i < m) {
-        res.push_back(nums1[i]);
-        i++;
-    }
-    while(j < n) {
-        res.push_back(nums2[j]);
-        j++;
-    }
-
-    int k = res.size();
-    cout << std::setprecision(5);
-
-    if(k & 1) {
-        return (double)res[k >> 1];
-    } else {
-        double res1 = (double)res[k >> 1];
-        double res2 = (double)res[(k >> 1) - 1];
-        return (res1 + res2) / 2.0;
     }
 }
 
-void solve()
-{
-    vector<int> nums1 = {1};
-    vector<int> nums2 = {2};
-    double result = asd(nums1, nums2);
-    cout << result << nl;
+void bfs(int root, vector<int> edge[], vector<bool>& visited) {
+    queue<int> q;
+    q.push(root);
+    visited[root] = true;
+    while(!q.empty()) {
+        int u = q.front();
+        q.pop();
+        cout << u << " ";
+        for(int v : edge[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                q.push(v);
+            }
+        }
+    }
+}
+
+void solve() {
+    int n, m; cin >> n >> m;
+
+    vector<int> edge[n + 1];
+    vector<bool> visited(n + 1, false);
+
+    for(int i = 0; i < m; i++) {
+        int u, v; cin >> u >> v;
+        edge[u].push_back(v);
+        edge[v].push_back(u);
+    }
+
+    dfs(1, edge, visited);
+
+    // Reset visited for BFS
+    fill(visited.begin(), visited.end(), false);
+    cout << nl;
+
+    bfs(1, edge, visited);
 }
 
 anvnh {
