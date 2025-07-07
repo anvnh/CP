@@ -220,7 +220,8 @@ if __name__ == "__main__":
     edges = []
     print(f"Enter {m} edges (each edge as two space-separated node numbers):")
     for _ in range(m):
-        u, v = map(int, input().split())
+        # u, v = map(int, input().split())
+        u, v = input().split()
         edges.append((u, v))
 
     print("Graph Traversal Visualization")
@@ -228,8 +229,8 @@ if __name__ == "__main__":
     print("Edges:", edges)
     print("Starting visualization...")
 
-    # Allow user to input the starting node
-    start_node = int(input("Enter the start node (choose a number from the graph nodes): "))
+    # start_node = int(input("Enter the start node (choose a number from the graph nodes): "))
+    start_node = (input("Enter the start node (choose a number from the graph nodes): "))
 
     # Start visualization
     anim = visualizer.visualize(edges, start_node=start_node)

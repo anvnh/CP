@@ -41,53 +41,20 @@ void setIO(string s){
     #endif
 }
 
-void dfs(int root, vector<int> edge[], vector<bool>& visited) {
-    visited[root] = true;
-    cout << root << " ";
+void solve()
+{
+    int n; cin >> n;
+    cin.ignore();
 
-    for (int v : edge[root]) {
-        if (!visited[v]) {
-            dfs(v, edge, visited);
+    string res;
+    for(int i = 0; i < n; i++) {
+        string s; getline(cin, s);
+        if(i == 0 || s < res) {
+            res = s;
         }
     }
-}
 
-void bfs(int root, vector<int> edge[], vector<bool>& visited) {
-    queue<int> q;
-    q.push(root);
-    visited[root] = true;
-    while(!q.empty()) {
-        int u = q.front();
-        q.pop();
-        cout << u << " ";
-        for(int v : edge[u]) {
-            if (!visited[v]) {
-                visited[v] = true;
-                q.push(v);
-            }
-        }
-    }
-}
-
-void solve() {
-    int n, m; cin >> n >> m;
-
-    vector<int> edge[n + 1];
-    vector<bool> visited(n + 1, false);
-
-    for(int i = 0; i < m; i++) {
-        int u, v; cin >> u >> v;
-        edge[u].push_back(v);
-        edge[v].push_back(u);
-    }
-
-    dfs(1, edge, visited);
-
-    // Reset visited for BFS
-    fill(visited.begin(), visited.end(), false);
-    cout << nl;
-
-    bfs(1, edge, visited);
+    cout << res << nl;
 }
 
 anvnh {
