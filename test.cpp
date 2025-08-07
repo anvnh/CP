@@ -3,9 +3,34 @@
     RyeNyn
 **/
 
-#include <algorithm>
+//
+//                       oo0oo
+//                      o8888888o
+//                      88" . "88
+//                      (| -- |)
+//                      0\  =  /0
+//                    __/---'\___
+//                  .' \\|     |// '.
+//                 / \\|||  :  |||// \
+//                / _||||| -:- |||||- \
+//               |   | \\\  -  /// |   |
+//               | \_|  ''\---/''  |_/ |
+//               \  .-\__  '-'  ___/-. /
+//             ___'. .'  /--.--\  . .'
+//          ."" '<  `._<|>/__.' >' "".
+//         | | :  - \.;\ _ /;./ -  : | |
+//         \  \ _.   \_ __\ /__ _/   .- /  /
+//     =====-.____. ___/__.-___.-'=====
+//                       =---='
+//
+//
+//     ~~~~~~~~~~~
+//
+//       Buddha blesses you with no bugs forever
+//
+
 #include <bits/stdc++.h>
-#include <climits>
+#include <string>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
@@ -43,52 +68,11 @@ void setIO(string s){
     #endif
 }
 
-double asd(vector<int>& nums1, vector<int>& nums2) {
-    int m = nums1.size();
-    int n = nums2.size();
-    int i = 0, j = 0;
-    vector<int> res;
-    while(i < m && j < n) {
-        if(nums1[i] < nums2[j]) {
-            res.push_back(nums1[i]);
-            i++;
-        } else if(nums1[i] > nums2[j]) {
-            res.push_back(nums2[j]);
-            j++;
-        } else {
-            res.push_back(nums1[i]);
-            res.push_back(nums2[j]);
-            i++;
-            j++;
-        }
-    }
-    while(i < m) {
-        res.push_back(nums1[i]);
-        i++;
-    }
-    while(j < n) {
-        res.push_back(nums2[j]);
-        j++;
-    }
-
-    int k = res.size();
-    cout << std::setprecision(5);
-
-    if(k & 1) {
-        return (double)res[k >> 1];
-    } else {
-        double res1 = (double)res[k >> 1];
-        double res2 = (double)res[(k >> 1) - 1];
-        return (res1 + res2) / 2.0;
-    }
-}
-
 void solve()
 {
-    vector<int> nums1 = {1};
-    vector<int> nums2 = {2};
-    double result = asd(nums1, nums2);
-    cout << result << nl;
+    string s; 
+    getline(cin, s);
+    cout << s << nl;
 }
 
 anvnh {

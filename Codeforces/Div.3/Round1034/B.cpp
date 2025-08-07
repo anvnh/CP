@@ -47,38 +47,23 @@ void solve()
     int n, j, k;
     cin >> n >> j >> k;
     vector<int> a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
-
-    int strength_j = a[j - 1];
-    int count_greater = 0;
-    int count_equal = 0;
-
+    int ma = 0;
     for (int i = 0; i < n; i++) {
-        if (a[i] > strength_j) count_greater++;
-        else if (a[i] == strength_j) count_equal++;
+        cin >> a[i];
+        ma = max(ma, a[i]);
     }
-
-    // Trừ đi 1 vì người chơi j cũng được tính trong count_equal
-    count_equal--;
-
-    if (count_greater < k) {
-        cout << "YES\n";
-    } else if (count_greater == k && count_equal > 0) {
-        cout << "YES\n";
-    } else {
-        cout << "NO\n";
-    }
+    (k > 1 || a[j - 1] == ma) ? cout << "YES" << nl : cout << "NO" << nl;
 }
 
 anvnh {
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif
-fastio
-int ntest;
-ntest = 1;
-cin >> ntest;
+    fastio
+    int ntest;
+    ntest = 1;
+    cin >> ntest;
     while (ntest--)
     {
         clock_t z = clock();
