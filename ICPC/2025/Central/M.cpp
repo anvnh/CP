@@ -27,21 +27,71 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define INF 0x3f3f3f3f
 
-int manha(int x1, int y1, int x2, int y2) {
-      return abs(x1 - x2) + abs(y1 - y2);
+ll mt1 = LLONG_MAX;
+ll kq = LLONG_MAX;
+
+pair<int, int> A;
+pair<int, int> B;
+
+int kc(pair<int, int> x1, pair<int, int> x2) {
+      return abs(x1.fi - x2.fi) + abs(x1.se - x2.se);
+}
+
+int _min(ll a, ll b) {
+      return min(a, b);
+}
+
+void tinh(vector<pair<int, int> > l, int k, pair<int, int> last, int sl, pair<int, int> z) {
+      if (l.size()) {
+            for (int i = 0; i < l.size(); i++) {
+                  vector<pair<int, int>> tam = l;
+                  pair<int, int> x = tam[i];
+                  tam.erase(tam.begin() + i);
+                  int kk = k + kc(x, last) * sl;
+                  tinh(tam, kk, x, sl + 1, z);
+            }
+      } else {
+            mt1 = _min(mt1, kc(z, last) * sl + k);
+      }
+}
+
+void ran(vector<pair<int, int>> vt, vector<pair<int, int>> n1, vector<pair<int, int>> n2) {
+      if (vt.size()) {
+            vector<pair<int, int>> tt = vt;
+            pair<int, int> xx = tt[tt.size() - 1];
+            tt.pop_back();
+            vector<pair<int, int>> nn1 = n1;
+            nn1.push_back(xx);
+            ran(tt, nn1, n2);
+            vector<pair<int, int>> nn2 = n2;
+            nn2.push_back(xx);
+            ran(tt, n1, nn2);
+      } else {
+            mt1 == LLONG_MAX;
+            tinh(n1, 0, A, 0, A);
+            ll m1 = mt1;
+            mt1 = LLONG_MAX;
+
+            tinh(n2, 0, B, 0, B);
+            ll m2 = mt1;
+            kq = min(kq, m1 + m2);
+            cout << m1 << " "<< m2 << nl;
+      }
 }
 
 void solve() {
-      int N; cin >> N;
-      vector<pair<int, int>> vp;
+      int N;
+      cin >> N;
+      vector<pair<int, int> > vt;
       for (int i = 0; i < N; i++) {
-            int x1, x2; cin >> x1 >> x2;
-            vp.emplace_back(x1, x2);
+            int x1, x2;
+            cin >> x1 >> x2;
+            vt.emplace_back(x1, x2);
       }
-      sort(all(vp));
-      int xA, yA; cin >> xA >> yA;
-      int xB, yB; cin >> xB >> yB;
-      for (auto x : vp) cout << x.fi << " " << x.se << nl;
+      cin >> A.fi >> A.se;
+      cin >> B.fi >> B.se;
+      ran(vt, vector<pair<int, int>>(), vector<pair<int, int>>());
+      cout << kq << nl;
 }
 
 anvnh {
