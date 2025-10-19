@@ -1,24 +1,21 @@
+//
+// Created by vnhantyn on 10/19/25.
+//
+/**
+ * Author: anvnh
+ * RyeNyn
+**/
+
 #include <bits/stdc++.h>
 using namespace std;
-#define fastio                                                                 \
-      ios_base::sync_with_stdio(0);                                            \
-      cin.tie(0);                                                              \
-      cout.tie(0);
+#define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define anvnh signed main(void)
-
-template <typename T> void print(const T &t) {
-      for (const auto &element : t) {
-            std::cout << element << " ";
-      }
-      std::cout << std::endl;
-}
-
 #define ll long long
 #define pb push_back
 #define fi first
 #define se second
-#define FOR(i, a, b) for (int i = (a), _b = (b); i <= _b; ++i)
-#define REP(i, n) for (int i = 0, _n = (n); i < _n; ++i)
+#define _for(i, a, b) for(int i = (a), _b = (b); i <= _b; ++i)
+#define rep(i, n) for(int i = 0, _n = (n); i < _n; ++i)
 #define MASK(i) (1LL << (i))
 #define BIT(x, i) (((x) >> (i)) & 1)
 #define SET_ON(x, i) ((x) | MASK(i))
@@ -29,12 +26,9 @@ template <typename T> void print(const T &t) {
 #define rall(x) rbegin(x), rend(x)
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define INF 0x3f3f3f3f
-const ll MOD = 1e9 + 7;
 
 void solve() {
-      int n, m;
-      cin >> n >> m;
-      cout << n * m << nl;
+
 }
 
 anvnh {
@@ -42,13 +36,13 @@ anvnh {
       freopen("input.txt", "r", stdin);
       freopen("output.txt", "w", stdout);
 #endif
-      fastio int ntest;
-      ntest = 1;
+      fastio
+      int ntest = 1;
       // cin >> ntest;
       while (ntest--) {
             clock_t z = clock();
             solve();
-            debug("Total Time: %.7f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
+            debug("Total Time: %.7f\n", static_cast<double>(clock() - z)/ CLOCKS_PER_SEC);
       }
       return 0;
 }
