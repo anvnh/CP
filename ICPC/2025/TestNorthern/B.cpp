@@ -1,6 +1,3 @@
-//
-// Created by vnhantyn on 10/26/25.
-//
 /**
  * Author: anvnh
  * RyeNyn
@@ -28,22 +25,42 @@ using namespace std;
 #define INF 0x3f3f3f3f
 
 void solve() {
-      ll n, k, x; cin >> n >> k >> x;
+      ll n, m;
+      cin >> n >> m;
+      if (n & 1 || m & 1) {
+            return cout << "IMPOSSIBLE" << nl, void();
+      }
+      // n eyes, m feet
+      // 2 * x + 2 * y = n
+      // x + y = n / 2
+      // x = n / 2 - y
 
+      // 4 * x + 2 * y = m
+      // 4 * (n / 2 - y) + 2 * y = m
+      // 2n - 4y + 2y = m
+      // 2n - 2y = m
+      // (2n - m) / 2 = y
+
+      ll f = (m - n) / 2;
+      ll c = (2 * n - m) / 2;
+      // cout << f << " " << c << nl;
+      if (f * 4 + c * 2 == m && f * 2 + c * 2 == n && f >= 0 && c >= 0) {
+            cout << f << " " << c << nl;
+      } else {
+            cout << "IMPOSSIBLE" << nl;
+      }
 }
 
 anvnh {
-#ifndef ONLINE_JUDGE
-      freopen("input.txt", "r", stdin);
-      freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+//       freopen("input.txt", "r", stdin);
+//       freopen("output.txt", "w", stdout);
+// #endif
       fastio
       int ntest = 1;
-      cin >> ntest;
+      // cin >> ntest;
       while (ntest--) {
-            clock_t z = clock();
             solve();
-            debug("Total Time: %.7f\n", static_cast<double>(clock() - z)/ CLOCKS_PER_SEC);
       }
       return 0;
 }
