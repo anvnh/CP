@@ -27,7 +27,7 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define INF 0x3f3f3f3f
 
-void solve() { iad n; }
+void solve() { cout << "Hello, World!" << nl; }
 
 anvnh {
 #ifndef ONLINE_JUDGE
@@ -35,12 +35,6 @@ anvnh {
       freopen("output.txt", "w", stdout);
 #endif
       fastio int ntest;
-      ntest = 1;
-      cin >> ntest;
-      while (ntest--) {
-            clock_t z = clock();
-            solve();
-            debug("Total Time: %.7f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
-      }
+      solve();
       return 0;
 }
