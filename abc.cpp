@@ -32,8 +32,7 @@ template <typename T> void print(const T &t) {
 const ll MOD = 1e9 + 7;
 
 void solve() {
-      int n, m;
-      cin >> n >> m;
+      int n, m; cin >> n >> m;
       cout << n * m << nl;
 }
 
@@ -44,7 +43,7 @@ anvnh {
 #endif
       fastio int ntest;
       ntest = 1;
-      // cin >> ntest;
+      cin >> ntest;
       while (ntest--) {
             clock_t z = clock();
             solve();

@@ -1,0 +1,12 @@
+[
+    {
+        "label": "compile and run current C++ file",
+        "command": "file=\"$ZED_FILE\"; case \"$file\" in *.cpp|*.cc|*.cxx|*.c) ;; *) echo 'Not a C/C++ file'; exit 1;; esac; out=\"${file%.*}.out\"; g++ -std=c++17 -Wall -Wextra -Wno-unused-variable -O2 \"$file\" -o \"$out\" && \"$out\"",
+        "cwd": "$ZED_DIRNAME",
+        "save": "current",
+        "use_new_terminal": false,
+        "allow_concurrent_runs": true,
+        "reveal": "always",
+        "hide": "never",
+    },
+]

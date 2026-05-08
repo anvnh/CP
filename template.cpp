@@ -6,9 +6,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define fastio                                                                 \
-      ios_base::sync_with_stdio(0);                                            \
-      cin.tie(0);                                                              \
-      cout.tie(0);
+    ios_base::sync_with_stdio(0);                                              \
+    cin.tie(0);                                                                \
+    cout.tie(0);
 #define anvnh signed main(void)
 #define ll long long
 #define pb push_back
@@ -27,14 +27,20 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define INF 0x3f3f3f3f
 
-void solve() { cout << "Hello, World!" << nl; }
+void solve() {}
 
 anvnh {
 #ifndef ONLINE_JUDGE
-      freopen("input.txt", "r", stdin);
-      freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif
-      fastio int ntest;
-      solve();
-      return 0;
+    fastio int ntest;
+    ntest = 1;
+    cin >> ntest;
+    while (ntest--) {
+        clock_t z = clock();
+        solve();
+        debug("Total Time: %.7f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
+    }
+    return 0;
 }
