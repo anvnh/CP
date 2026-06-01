@@ -27,7 +27,30 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define INF 0x3f3f3f3f
 
+void backtrack(int n, int open, int close, string s, vector<string>& res) {
+    if((int)s.size() == n * 2) {
+        res.push_back(s);
+        return;
+    }
+    if(open == 0 || open < n) {
+        backtrack(n, open + 1, close, s + '(', res);
+    }
+    if(close < n && close < open) {
+        backtrack(n, open, close + 1, s + ')', res);
+    }
+}
+
+vector<string> generateParenthesis(int n) {
+    vector<string> res;
+    backtrack(n, 0, 0, "", res);
+    return res;
+}
+
 void solve() {
+    int n; cin >> n;
+    vector<string> a = generateParenthesis(n);
+    for(auto x : a) cout << x << " ";
+    cout << nl;
 }
 
 anvnh {

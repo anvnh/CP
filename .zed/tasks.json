@@ -1,12 +1,18 @@
 [
     {
         "label": "compile and run current C++ file",
-        "command": "file=\"$ZED_FILE\"; case \"$file\" in *.cpp|*.cc|*.cxx|*.c) ;; *) echo 'Not a C/C++ file'; exit 1;; esac; out=\"${file%.*}.out\"; g++ -std=c++17 -Wall -Wextra -Wno-unused-variable -O2 \"$file\" -o \"$out\" && \"$out\"",
-        "cwd": "$ZED_DIRNAME",
+        "command": "if [ -d /ucrt64/bin ]; then export PATH=/ucrt64/bin:$PATH; fi; file=\"$ZED_FILE\"; dir=\"$ZED_DIRNAME\"; root=\"$ZED_WORKTREE_ROOT\"; [ -z \"$root\" ] && root=\"$dir\"; if command -v cygpath >/dev/null 2>&1; then file=\"$(cygpath -u \"$file\")\"; dir=\"$(cygpath -u \"$dir\")\"; root=\"$(cygpath -u \"$root\")\"; fi; case \"$file\" in *.cpp|*.cc|*.cxx|*.c) ;; *) echo 'Not a C/C++ file'; exit 1;; esac; mkdir -p \"$root/.build\"; ext=\"\"; case \"$(uname -s)\" in MINGW*|MSYS*|CYGWIN*) ext=\".exe\";; esac; out=\"$root/.build/$ZED_STEM$ext\"; g++ -std=c++20 -Wall -Wextra -Wno-unused-variable -O2 \"$file\" -o \"$out\" && cd \"$root\" && \"$out\"; status=$?; rm -rf \"$root/.build\"; exit $status",
+        "cwd": "$ZED_WORKTREE_ROOT",
+        "shell": {
+            "with_arguments": {
+                "program": "bash",
+                "args": ["-lc"]
+            }
+        },
         "save": "current",
         "use_new_terminal": false,
         "allow_concurrent_runs": true,
         "reveal": "always",
-        "hide": "never",
-    },
+        "hide": "never"
+    }
 ]

@@ -3,6 +3,7 @@
     RyeNyn
 **/
 
+#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 #define fastio                                                                 \
@@ -27,7 +28,26 @@ using namespace std;
 #define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define INF 0x3f3f3f3f
 
+const int MAXN = 1e5;
+struct Node {
+    int max_free;
+    int left_free;
+    int right_free;
+    int lazy;
+};
+
+vector<Node> tree(MAXN * 4);
+
+int Max(int a, int b, int c) {
+    return max(max(a, b), c);
+}
+
+vector<bool> getResults(vector<vector<int>>& queries) {
+}
+
 void solve() {
+    vector<vector<int>> q = {{1, 2}, {2, 3, 3}, {2, 3, 1}, {2, 2, 2}};
+    vector<bool> vb = getResults(q);
 }
 
 anvnh {
