@@ -1,2 +1,9 @@
-<h3> Hi </h3>
-<p> git clone -o origin https://github.com/anvnh/Code-CPP.git CP </p>
+Linux
+```
+date "+%Y-%m-%d %H:%M:%S"
+```
+
+Window
+```
+Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+```
