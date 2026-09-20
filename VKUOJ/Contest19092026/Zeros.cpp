@@ -28,6 +28,12 @@ using namespace std;
 #define INF 0x3f3f3f3f
 
 void solve() {
+    int n; cin >> n;
+    ll res = 0;
+    for(int i = 5; i < 1e9; i *= 5) {
+        res += n / i;
+    }
+    cout << res << nl;
 }
 
 anvnh {
