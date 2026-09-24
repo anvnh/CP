@@ -35,8 +35,8 @@ void solve() {
 
 anvnh {
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    freopen("input", "r", stdin);
+    freopen("output", "w", stdout);
 #endif
     fastio int ntest;
     ntest = 1;
